@@ -515,496 +515,500 @@
     </div>
 
     <script>
-        // Default quiz data
-        const defaultQuestions = [
-            {
-                question: "Qual é a principal função da vitamina D no sistema imunitário?",
-                options: [
-                    "Produzir hemoglobina",
-                    "Regular as respostas imunitárias (inata e adaptativa)",
-                    "Acelerar o metabolismo",
-                    "Fortalecer os ossos apenas"
-                ],
-                correct: 1,
-                feedback: "A vitamina D tem um papel crucial na regulação da resposta imunitária. Na imunidade inata, estimula os monócitos e macrófagos. Na imunidade adaptativa, controla a liberação de substâncias inflamatórias.",
-                supplement: "Vitamina D3"
-            },
-            {
-                question: "O zinco é essencial para qual célula do sistema imunitário?",
-                options: [
-                    "Hemácias",
-                    "Células T (linfócitos T)",
-                    "Plaquetas",
-                    "Eritrócitos"
-                ],
-                correct: 1,
-                feedback: "O zinco é fundamental para o desenvolvimento, comunicação e função das células T. A sua deficiência afeta significativamente a capacidade imunitária.",
-                supplement: "Zinco Bisglicinato"
-            },
-            {
-                question: "Quantas horas após o início dos sintomas deve tomar zinco para máxima eficácia?",
-                options: [
-                    "48 horas",
-                    "72 horas",
-                    "24 horas",
-                    "1 semana"
-                ],
-                correct: 2,
-                feedback: "A investigação científica (BMJ Open, 2021) demonstra que o zinco é mais eficaz quando tomado nas primeiras 24 horas após o início dos sintomas.",
-                supplement: "Zinco"
-            },
-            {
-                question: "Qual é a dose diária recomendada de vitamina C para adultos?",
-                options: [
-                    "5-10 mg",
-                    "50-100 mg",
-                    "75-90 mg",
-                    "500-1000 mg"
-                ],
-                correct: 2,
-                feedback: "A recomendação diária é de 75-90 mg. Porém, para suplementação, muitas vezes usa-se 500-1000 mg/dia em doses divididas.",
-                supplement: "Vitamina C"
-            },
-            {
-                question: "O que caracteriza a imunidade inata?",
-                options: [
-                    "Aquela que adquirimos ao longo da vida",
-                    "Aquela com a qual já nascemos",
-                    "A que precisa de vacinação",
-                    "A que diminui com a idade"
-                ],
-                correct: 1,
-                feedback: "A imunidade inata é congénita - aquela com a qual nascemos e que atua imediatamente contra patogénios. Diferentes da imunidade adaptativa que desenvolvemos ao longo da vida.",
-                supplement: "Vitamina D"
-            },
-            {
-                question: "Qual é a dose máxima segura de vitamina D para adultos?",
-                options: [
-                    "1000 IU",
-                    "2000 IU",
-                    "4000 IU",
-                    "6000 IU"
-                ],
-                correct: 2,
-                feedback: "A dose máxima segura é de 4000 IU/dia. Doses diárias recomendadas variam de 600-2000 IU, dependendo das necessidades individuais.",
-                supplement: "Vitamina D"
-            },
-            {
-                question: "A vitamina C funciona como antioxidante ao proteger contra...",
-                options: [
-                    "Bactérias",
-                    "Radicais livres e stress oxidativo",
-                    "Vírus",
-                    "Fungos"
-                ],
-                correct: 1,
-                feedback: "A vitamina C é um poderoso antioxidante que protege contra danos induzidos pelo stress oxidativo, relacionado a várias doenças cardiovasculares e renais.",
-                supplement: "Vitamina C"
-            },
-            {
-                question: "Qual é a dose diária recomendada de zinco para mulheres?",
-                options: [
-                    "5 mg",
-                    "8 mg",
-                    "15 mg",
-                    "25 mg"
-                ],
-                correct: 1,
-                feedback: "A dose diária recomendada é 8 mg para mulheres adultas e 11 mg para homens. A dose máxima segura é 40 mg/dia.",
-                supplement: "Zinco"
-            },
-            {
-                question: "Qual suplemento mostrou reduzir a duração da gripe em média 4 dias?",
-                options: [
-                    "Própolis",
-                    "Gengibre",
-                    "Sabugueiro (Sambucus nigra)",
-                    "Alcaçuz"
-                ],
-                correct: 2,
-                feedback: "Estudos clínicos publicados no Journal of International Medical Research (2004) demonstram que o sabugueiro pode reduzir os sintomas de gripe em aproximadamente 4 dias.",
-                supplement: "Sabugueiro"
-            },
-            {
-                question: "A curcumina (de cúrcuma) modula principalmente...",
-                options: [
-                    "A absorção de nutrientes",
-                    "A inflamação e o equilíbrio imunitário",
-                    "A função digestiva",
-                    "A sensibilidade ao paladar"
-                ],
-                correct: 1,
-                feedback: "A curcumina tem propriedades imunomoduladoras comprovadas, reduzindo a inflamação e promovendo equilíbrio no sistema imunitário (Journal of Clinical Immunology, 2015).",
-                supplement: "Curcumina + Piperina"
-            },
-            {
-                question: "Para máxima absorção, a curcumina deve ser combinada com...",
-                options: [
-                    "Gengibre",
-                    "Piperina (pimenta preta)",
-                    "Mel",
-                    "Óleo de coco"
-                ],
-                correct: 1,
-                feedback: "A piperina aumenta significativamente a biodisponibilidade da curcumina, potenciando os seus efeitos imunomoduladoras. Este é o motivo por forma estão frequentemente combinadas.",
-                supplement: "Curcumina + Piperina"
-            },
-            {
-                question: "Os probióticos atuam principalmente no sistema imunitário através de...",
-                options: [
-                    "Aumento da ingestão calórica",
-                    "Melhoria da barreira intestinal e aumento de IgA",
-                    "Bloqueio de nutrientes",
-                    "Aumento do cortisol"
-                ],
-                correct: 1,
-                feedback: "Os probióticos melhoram a saúde intestinal, aumentam a atividade fagocitária e elevam os níveis de IgA (imunoglobulina A) no intestino, fundamentais para a imunidade.",
-                supplement: "Probióticos"
-            },
-            {
-                question: "Qual é a dose mínima recomendada de probióticos para eficácia?",
-                options: [
-                    "1 bilião de bactérias",
-                    "5 biliões de bactérias",
-                    "10 biliões de bactérias",
-                    "50 biliões de bactérias"
-                ],
-                correct: 2,
-                feedback: "Recomenda-se um mínimo de 10 biliões de bactérias (10 CFU) por suplemento para garantir eficácia clínica demonstrada.",
-                supplement: "Probióticos"
-            },
-            {
-                question: "A echinacea estimula principalmente...",
-                options: [
-                    "A absorção intestinal",
-                    "A fagocitose e atividade de células NK",
-                    "A síntese de hemoglobina",
-                    "A coagulação do sangue"
-                ],
-                correct: 1,
-                feedback: "A echinacea estimula a fagocitose (destruição de patogénios) e aumenta a atividade das células NK (Natural Killer), melhorando a resposta imunitária inata.",
-                supplement: "Echinacea"
-            },
-            {
-                question: "Estudos mostram que a echinacea pode melhorar a função imunitária em até...",
-                options: [
-                    "25%",
-                    "45%",
-                    "58%",
-                    "75%"
-                ],
-                correct: 2,
-                feedback: "Uma meta-análise de 14 estudos clínicos concluiu que a echinacea pode melhorar a função imunitária em até 58% e fortalecer o corpo durante o stress em 36 horas.",
-                supplement: "Echinacea"
-            },
-            {
-                question: "Qual mineral protege especificamente as barreiras de tecido do corpo?",
-                options: [
-                    "Magnésio",
-                    "Cálcio",
-                    "Zinco",
-                    "Ferro"
-                ],
-                correct: 2,
-                feedback: "O zinco protege as barreiras de tecido (epitelial e mucosa) do corpo, ajudando a prevenir a entrada de agentes patogénios como bactérias e vírus.",
-                supplement: "Zinco"
-            },
-            {
-                question: "A vitamina A fortalece principalmente...",
-                options: [
-                    "Os ossos",
-                    "Os músculos",
-                    "As membranas mucosas (nariz e garganta)",
-                    "O colesterol"
-                ],
-                correct: 2,
-                feedback: "A vitamina A ajuda a fortalecer as membranas mucosas do nariz e da garganta, primeira linha de defesa contra patogénios. Também apoia a função do timo.",
-                supplement: "Vitamina A"
-            },
-            {
-                question: "A deficiência de zinco pode resultar em risco aumentado de...",
-                options: [
-                    "Osteoporose",
-                    "Infeções respiratórias e pneumonia",
-                    "Diabetes",
-                    "Colesterol alto"
-                ],
-                correct: 1,
-                feedback: "A deficiência de zinco afeta significativamente a capacidade do sistema imunitário funcionar adequadamente, aumentando o risco de infeções, incluindo pneumonia.",
-                supplement: "Zinco"
-            },
-            {
-                question: "Qual suplemento contém propriedades anticancerígenas e imunoestimuladoras reconhecidas?",
-                options: [
-                    "Mel puro",
-                    "Própolis e espirulina",
-                    "Chá verde apenas",
-                    "Água desionizada"
-                ],
-                correct: 1,
-                feedback: "Própolis e espirulina têm efeitos anticancerígenos, antibacterianos e imunoestimuladoras documentados em múltiplos estudos científicos.",
-                supplement: "Própolis e Espirulina"
-            }
-        ];
-
-          let questions = [...defaultQuestions];
-        let currentQuestion = 0;
-        let score = 0;
-        let answered = [];
-        let enableDiscount = true;
-        let discountCode = "LIGA_IMUN_QUIZ";
-        let isAdmin = false;
-
-        // Verificar se o utilizador é administrador (via URL)
-        function checkAdminAccess() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const adminKey = urlParams.get('admin');
-            if (adminKey === 'fligacol2023') {
-                isAdmin = true;
-                const editBtn = document.getElementById('editBtn');
-                const discountBtn = document.getElementById('discountBtn');
-                if (editBtn) editBtn.style.display = 'inline-block';
-                if (discountBtn) discountBtn.style.display = 'inline-block';
-            }
+    // Default quiz data
+    const defaultQuestions = [
+        {
+            question: "Qual é a principal função da vitamina D no sistema imunitário?",
+            options: [
+                "Produzir hemoglobina",
+                "Regular as respostas imunitárias (inata e adaptativa)",
+                "Acelerar o metabolismo",
+                "Fortalecer os ossos apenas"
+            ],
+            correct: 1,
+            feedback: "A vitamina D tem um papel crucial na regulação da resposta imunitária. Na imunidade inata, estimula os monócitos e macrófagos. Na imunidade adaptativa, controla a liberação de substâncias inflamatórias.",
+            supplement: "Vitamina D3"
+        },
+        {
+            question: "O zinco é essencial para qual célula do sistema imunitário?",
+            options: [
+                "Hemácias",
+                "Células T (linfócitos T)",
+                "Plaquetas",
+                "Eritrócitos"
+            ],
+            correct: 1,
+            feedback: "O zinco é fundamental para o desenvolvimento, comunicação e função das células T. A sua deficiência afeta significativamente a capacidade imunitária.",
+            supplement: "Zinco Bisglicinato"
+        },
+        {
+            question: "Quantas horas após o início dos sintomas deve tomar zinco para máxima eficácia?",
+            options: [
+                "48 horas",
+                "72 horas",
+                "24 horas",
+                "1 semana"
+            ],
+            correct: 2,
+            feedback: "A investigação científica (BMJ Open, 2021) demonstra que o zinco é mais eficaz quando tomado nas primeiras 24 horas após o início dos sintomas.",
+            supplement: "Zinco"
+        },
+        {
+            question: "Qual é a dose diária recomendada de vitamina C para adultos?",
+            options: [
+                "5-10 mg",
+                "50-100 mg",
+                "75-90 mg",
+                "500-1000 mg"
+            ],
+            correct: 2,
+            feedback: "A recomendação diária é de 75-90 mg. Porém, para suplementação, muitas vezes usa-se 500-1000 mg/dia em doses divididas.",
+            supplement: "Vitamina C"
+        },
+        {
+            question: "O que caracteriza a imunidade inata?",
+            options: [
+                "Aquela que adquirimos ao longo da vida",
+                "Aquela com a qual já nascemos",
+                "A que precisa de vacinação",
+                "A que diminui com a idade"
+            ],
+            correct: 1,
+            feedback: "A imunidade inata é congénita - aquela com a qual nascemos e que atua imediatamente contra patogénios. Diferente da imunidade adaptativa que desenvolvemos ao longo da vida.",
+            supplement: "Vitamina D"
+        },
+        {
+            question: "Qual é a dose máxima segura de vitamina D para adultos?",
+            options: [
+                "1000 IU",
+                "2000 IU",
+                "4000 IU",
+                "6000 IU"
+            ],
+            correct: 2,
+            feedback: "A dose máxima segura é de 4000 IU/dia. Doses diárias recomendadas variam de 600-2000 IU, dependendo das necessidades individuais.",
+            supplement: "Vitamina D"
+        },
+        {
+            question: "A vitamina C funciona como antioxidante ao proteger contra...",
+            options: [
+                "Bactérias",
+                "Radicais livres e stress oxidativo",
+                "Vírus",
+                "Fungos"
+            ],
+            correct: 1,
+            feedback: "A vitamina C é um poderoso antioxidante que protege contra danos induzidos pelo stress oxidativo, relacionado a várias doenças cardiovasculares e renais.",
+            supplement: "Vitamina C"
+        },
+        {
+            question: "Qual é a dose diária recomendada de zinco para mulheres?",
+            options: [
+                "5 mg",
+                "8 mg",
+                "15 mg",
+                "25 mg"
+            ],
+            correct: 1,
+            feedback: "A dose diária recomendada é 8 mg para mulheres adultas e 11 mg para homens. A dose máxima segura é 40 mg/dia.",
+            supplement: "Zinco"
+        },
+        {
+            question: "Qual suplemento mostrou reduzir a duração da gripe em média 4 dias?",
+            options: [
+                "Própolis",
+                "Gengibre",
+                "Sabugueiro (Sambucus nigra)",
+                "Alcaçuz"
+            ],
+            correct: 2,
+            feedback: "Estudos clínicos mostram que o sabugueiro pode reduzir os sintomas de gripe em cerca de 4 dias.",
+            supplement: "Sabugueiro"
+        },
+        {
+            question: "A curcumina (de cúrcuma) modula principalmente...",
+            options: [
+                "A absorção de nutrientes",
+                "A inflamação e o equilíbrio imunitário",
+                "A função digestiva",
+                "A sensibilidade ao paladar"
+            ],
+            correct: 1,
+            feedback: "A curcumina tem propriedades imunomoduladoras, ajudando a reduzir a inflamação e a equilibrar o sistema imunitário.",
+            supplement: "Curcumina + Piperina"
+        },
+        {
+            question: "Para máxima absorção, a curcumina deve ser combinada com...",
+            options: [
+                "Gengibre",
+                "Piperina (pimenta preta)",
+                "Mel",
+                "Óleo de coco"
+            ],
+            correct: 1,
+            feedback: "A piperina aumenta significativamente a biodisponibilidade da curcumina, potenciando os seus efeitos.",
+            supplement: "Curcumina + Piperina"
+        },
+        {
+            question: "Os probióticos atuam principalmente no sistema imunitário através de...",
+            options: [
+                "Aumento da ingestão calórica",
+                "Melhoria da barreira intestinal e aumento de IgA",
+                "Bloqueio de nutrientes",
+                "Aumento do cortisol"
+            ],
+            correct: 1,
+            feedback: "Os probióticos ajudam a equilibrar a flora intestinal e a reforçar a imunidade associada ao intestino.",
+            supplement: "Probióticos"
+        },
+        {
+            question: "Qual é a dose mínima recomendada de probióticos para eficácia?",
+            options: [
+                "1 bilião de bactérias",
+                "5 biliões de bactérias",
+                "10 biliões de bactérias",
+                "50 biliões de bactérias"
+            ],
+            correct: 2,
+            feedback: "Recomenda-se, em muitos casos, pelo menos 10 mil milhões (10 biliões) de UFC por dose para efeitos clinicamente relevantes.",
+            supplement: "Probióticos"
+        },
+        {
+            question: "A echinacea estimula principalmente...",
+            options: [
+                "A absorção intestinal",
+                "A fagocitose e atividade de células NK",
+                "A síntese de hemoglobina",
+                "A coagulação do sangue"
+            ],
+            correct: 1,
+            feedback: "A echinacea estimula a fagocitose e aumenta a atividade das células Natural Killer, reforçando a imunidade inata.",
+            supplement: "Echinacea"
+        },
+        {
+            question: "Estudos mostram que a echinacea pode...",
+            options: [
+                "Substituir todas as vacinas",
+                "Reduzir a duração e a intensidade de constipações",
+                "Aumentar o açúcar no sangue",
+                "Diminuir o efeito de todos os medicamentos"
+            ],
+            correct: 1,
+            feedback: "A echinacea pode reduzir ligeiramente a duração e intensidade de constipações em alguns casos, como parte de uma abordagem global.",
+            supplement: "Echinacea"
+        },
+        {
+            question: "Qual mineral protege especificamente as barreiras de tecido do corpo?",
+            options: [
+                "Magnésio",
+                "Cálcio",
+                "Zinco",
+                "Ferro"
+            ],
+            correct: 2,
+            feedback: "O zinco ajuda a manter a integridade da pele e das mucosas, importantes como barreira física às infeções.",
+            supplement: "Zinco"
+        },
+        {
+            question: "A vitamina A fortalece principalmente...",
+            options: [
+                "Os ossos",
+                "Os músculos",
+                "As membranas mucosas (nariz e garganta)",
+                "O colesterol"
+            ],
+            correct: 2,
+            feedback: "A vitamina A é importante para a saúde das mucosas do nariz e garganta, primeira linha de defesa contra patogénios.",
+            supplement: "Vitamina A"
+        },
+        {
+            question: "A deficiência de zinco pode resultar em risco aumentado de...",
+            options: [
+                "Osteoporose",
+                "Infeções respiratórias e pneumonia",
+                "Diabetes",
+                "Colesterol alto"
+            ],
+            correct: 1,
+            feedback: "A falta de zinco prejudica vários mecanismos de defesa, aumentando o risco de infeções, sobretudo respiratórias.",
+            supplement: "Zinco"
+        },
+        {
+            question: "Que vantagens são associadas ao própolis no contexto imunitário?",
+            options: [
+                "Apenas adoça bebidas",
+                "Tem ação antibacteriana, antiviral e ajuda a modular a resposta imunitária",
+                "É usado só como corante alimentar",
+                "Serve apenas para dar sabor a rebuçados"
+            ],
+            correct: 1,
+            feedback: "O própolis é tradicionalmente utilizado pelo seu potencial antibacteriano e antiviral, podendo apoiar as defesas em alguns contextos.",
+            supplement: "Própolis"
+        },
+        {
+            question: "Porque é importante o aconselhamento farmacêutico quando escolhe suplementos para as defesas?",
+            options: [
+                "Porque o farmacêutico decide em vez da pessoa",
+                "Para ajustar o suplemento à idade, medicamentos e doenças, evitando interações e excessos",
+                "Porque todos os suplementos são iguais",
+                "Porque assim não é preciso consultar o médico"
+            ],
+            correct: 1,
+            feedback: "O farmacêutico ajuda a escolher suplementos adequados ao histórico de saúde, a evitar interações e a usar doses seguras.",
+            supplement: "Aconselhamento Farmacêutico"
         }
+    ];
 
-        // Chamar ao carregar a página
-        checkAdminAccess();
+    let questions = [...defaultQuestions];
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = [];
+    let enableDiscount = true;
+    let discountCode = "LIGA_IMUN_QUIZ";
+    let isAdmin = false;
 
-        // Initialize quiz
-        function initQuiz() {
-
-        // Initialize quiz
-        function initQuiz() {
-            answered = new Array(questions.length).fill(null);
-            currentQuestion = 0;
-            score = 0;
-            loadQuizSection();
+    // Verificar se o utilizador é administrador (via URL)
+    function checkAdminAccess() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const adminKey = urlParams.get('admin');
+        if (adminKey === 'fligacol2023') {
+            isAdmin = true;
+            const editBtn = document.getElementById('editBtn');
+            const discountBtn = document.getElementById('discountBtn');
+            if (editBtn) editBtn.style.display = 'inline-block';
+            if (discountBtn) discountBtn.style.display = 'inline-block';
         }
+    }
 
-        function startQuiz() {
-            document.getElementById('quizStartSection').classList.remove('active');
-            document.getElementById('quizSection').classList.add('active');
-            initQuiz();
-        }
+    // Initialize quiz
+    function initQuiz() {
+        answered = new Array(questions.length).fill(null);
+        currentQuestion = 0;
+        score = 0;
+        loadQuizSection();
+    }
 
-        function loadQuizSection() {
-            const quizSection = document.getElementById('quizSection');
-            quizSection.innerHTML = '';
+    function startQuiz() {
+        document.getElementById('quizStartSection').classList.remove('active');
+        document.getElementById('quizSection').classList.add('active');
+        initQuiz();
+    }
 
-            questions.forEach((q, idx) => {
-                const card = document.createElement('div');
-                card.className = 'question-card';
-                card.innerHTML = `
-                    <div class="question-number">Pergunta ${idx + 1} de ${questions.length}</div>
-                    <div class="question-text">${q.question}</div>
-                    <div class="options">
-                        ${q.options.map((opt, optIdx) => `
-                            <div class="option" onclick="selectOption(${idx}, ${optIdx})" id="opt-${idx}-${optIdx}">
-                                ${String.fromCharCode(65 + optIdx)}. ${opt}
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="feedback" id="feedback-${idx}"></div>
-                `;
-                quizSection.appendChild(card);
-            });
+    function loadQuizSection() {
+        const quizSection = document.getElementById('quizSection');
+        quizSection.innerHTML = '';
 
-            const nav = document.createElement('div');
-            nav.className = 'navigation';
-            nav.innerHTML = `
-                <button class="btn btn-secondary" onclick="previousQuestion()" id="prevBtn" style="display: none;">← Anterior</button>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill" style="width: 5%;"></div>
+        questions.forEach((q, idx) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.innerHTML = `
+                <div class="question-number">Pergunta ${idx + 1} de ${questions.length}</div>
+                <div class="question-text">${q.question}</div>
+                <div class="options">
+                    ${q.options.map((opt, optIdx) => `
+                        <div class="option" onclick="selectOption(${idx}, ${optIdx})" id="opt-${idx}-${optIdx}">
+                            ${String.fromCharCode(65 + optIdx)}. ${opt}
+                        </div>
+                    `).join('')}
                 </div>
-                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">Próxima →</button>
+                <div class="feedback" id="feedback-${idx}"></div>
             `;
-            quizSection.appendChild(nav);
+            quizSection.appendChild(card);
+        });
 
-            showQuestion(0);
+        const nav = document.createElement('div');
+        nav.className = 'navigation';
+        nav.innerHTML = `
+            <button class="btn btn-secondary" onclick="previousQuestion()" id="prevBtn" style="display: none;">← Anterior</button>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 5%;"></div>
+            </div>
+            <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">Próxima →</button>
+        `;
+        quizSection.appendChild(nav);
+
+        showQuestion(0);
+    }
+
+    function showQuestion(idx) {
+        document.querySelectorAll('.question-card').forEach((card, i) => {
+            card.style.display = i === idx ? 'block' : 'none';
+        });
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressFill = document.getElementById('progressFill');
+
+        prevBtn.style.display = idx > 0 ? 'block' : 'none';
+        nextBtn.textContent = idx === questions.length - 1 ? 'Terminar Quiz ✓' : 'Próxima →';
+        progressFill.style.width = ((idx + 1) / questions.length * 100) + '%';
+
+        if (answered[idx] !== null) {
+            const selected = answered[idx];
+            document.getElementById(`opt-${idx}-${selected}`).classList.add('selected');
+        }
+    }
+
+    function selectOption(qIdx, optIdx) {
+        answered[qIdx] = optIdx;
+        const question = questions[qIdx];
+        const isCorrect = optIdx === question.correct;
+
+        const option = document.getElementById(`opt-${qIdx}-${optIdx}`);
+        option.classList.add('selected');
+
+        const feedback = document.getElementById(`feedback-${qIdx}`);
+        feedback.textContent = question.feedback;
+        feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+
+        if (isCorrect && !answered[qIdx + 1]) {
+            score++;
+        }
+    }
+
+    function nextQuestion() {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        } else {
+            finishQuiz();
+        }
+    }
+
+    function previousQuestion() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            showQuestion(currentQuestion);
+        }
+    }
+
+    function finishQuiz() {
+        document.getElementById('quizSection').classList.remove('active');
+        document.getElementById('resultsSection').classList.add('active');
+
+        const scorePercentage = Math.round((score / questions.length) * 100);
+        document.getElementById('scoreDisplay').textContent = `${score}/${questions.length}`;
+
+        let message = '';
+        if (scorePercentage === 100) {
+            message = "Excelente! Você é um especialista em suplementação e imunidade! 🌟";
+        } else if (scorePercentage >= 80) {
+            message = "Muito bom! Demonstra sólidos conhecimentos sobre defesas e suplementos.";
+        } else if (scorePercentage >= 60) {
+            message = "Bom desempenho! Continue a aprender sobre nutrição e imunidade.";
+        } else {
+            message = "Continue estudando! Há muito para descobrir sobre o sistema imunitário.";
         }
 
-        function showQuestion(idx) {
-            document.querySelectorAll('.question-card').forEach((card, i) => {
-                card.style.display = i === idx ? 'block' : 'none';
-            });
+        document.getElementById('resultMessage').textContent = message;
 
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const progressFill = document.getElementById('progressFill');
-
-            prevBtn.style.display = idx > 0 ? 'block' : 'none';
-            nextBtn.textContent = idx === questions.length - 1 ? 'Terminar Quiz ✓' : 'Próxima →';
-            progressFill.style.width = ((idx + 1) / questions.length * 100) + '%';
-
-            if (answered[idx] !== null) {
-                const selected = answered[idx];
-                document.getElementById(`opt-${idx}-${selected}`).classList.add('selected');
-            }
+        const discountBadge = document.getElementById('discountBadge');
+        if (enableDiscount && score === questions.length) {
+            discountBadge.style.display = 'block';
+            document.getElementById('discountCodeDisplay').textContent = discountCode;
+        } else {
+            discountBadge.style.display = 'none';
         }
+    }
 
-        function selectOption(qIdx, optIdx) {
-            answered[qIdx] = optIdx;
-            const question = questions[qIdx];
-            const isCorrect = optIdx === question.correct;
+    function restartQuiz() {
+        document.getElementById('resultsSection').classList.remove('active');
+        document.getElementById('quizStartSection').classList.add('active');
+    }
 
-            const option = document.getElementById(`opt-${qIdx}-${optIdx}`);
-            option.classList.add('selected');
+    function toggleSettings() {
+        const section = document.getElementById('settingsSection');
+        section.style.display = section.style.display === 'none' ? 'block' : 'none';
 
-            const feedback = document.getElementById(`feedback-${qIdx}`);
-            feedback.textContent = question.feedback;
-            feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+        if (section.style.display === 'block') {
+            const editableDiv = document.getElementById('editableQuestions');
+            editableDiv.innerHTML = '';
 
-            if (isCorrect && !answered[qIdx + 1]) {
-                score++;
-            }
-
-            setTimeout(() => {
-                if (qIdx < questions.length - 1) {
-                    nextQuestion();
-                }
-            }, 2000);
-        }
-
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                showQuestion(currentQuestion);
-            } else {
-                finishQuiz();
-            }
-        }
-
-        function previousQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                showQuestion(currentQuestion);
-            }
-        }
-
-        function finishQuiz() {
-            document.getElementById('quizSection').classList.remove('active');
-            document.getElementById('resultsSection').classList.add('active');
-
-            const scorePercentage = Math.round((score / questions.length) * 100);
-            document.getElementById('scoreDisplay').textContent = `${score}/${questions.length}`;
-
-            let message = '';
-            if (scorePercentage === 100) {
-                message = "Excelente! Você é um especialista em suplementação e imunidade! 🌟";
-            } else if (scorePercentage >= 80) {
-                message = "Muito bom! Demonstra sólidos conhecimentos sobre defesas e suplementos.";
-            } else if (scorePercentage >= 60) {
-                message = "Bom desempenho! Continue a aprender sobre nutrição e imunidade.";
-            } else {
-                message = "Continue estudando! Há muito para descobrir sobre o sistema imunitário.";
-            }
-
-            document.getElementById('resultMessage').textContent = message;
-
-            const discountBadge = document.getElementById('discountBadge');
-            if (enableDiscount && score === questions.length) {
-                discountBadge.style.display = 'block';
-                document.getElementById('discountCodeDisplay').textContent = discountCode;
-            } else {
-                discountBadge.style.display = 'none';
-            }
-        }
-
-        function restartQuiz() {
-            document.getElementById('resultsSection').classList.remove('active');
-            document.getElementById('quizStartSection').classList.add('active');
-        }
-
-        function toggleSettings() {
-            const section = document.getElementById('settingsSection');
-            section.style.display = section.style.display === 'none' ? 'block' : 'none';
-
-            if (section.style.display === 'block') {
-                const editableDiv = document.getElementById('editableQuestions');
-                editableDiv.innerHTML = '';
-
-                questions.forEach((q, idx) => {
-                    const qEdit = document.createElement('div');
-                    qEdit.className = 'edit-section';
-                    qEdit.innerHTML = `
-                        <h4 style="color: #38bdf8; margin-bottom: 15px;">Pergunta ${idx + 1}</h4>
-                        <label class="edit-label">Texto da Pergunta:</label>
-                        <input type="text" class="edit-input" id="q-text-${idx}" value="${q.question}">
-                        ${q.options.map((opt, optIdx) => `
-                            <label class="edit-label">Opção ${String.fromCharCode(65 + optIdx)}:</label>
-                            <input type="text" class="edit-input" id="q-opt-${idx}-${optIdx}" value="${opt}">
-                        `).join('')}
-                        <label class="edit-label">Feedback/Resposta Correta:</label>
-                        <textarea class="edit-input" id="q-feedback-${idx}" style="min-height: 80px;">${q.feedback}</textarea>
-                        <label class="edit-label">Suplemento Associado:</label>
-                        <input type="text" class="edit-input" id="q-supplement-${idx}" value="${q.supplement}">
-                    `;
-                    editableDiv.appendChild(qEdit);
-                });
-            }
-        }
-
-        function saveEdits() {
             questions.forEach((q, idx) => {
-                q.question = document.getElementById(`q-text-${idx}`).value;
-                q.options.forEach((_, optIdx) => {
-                    q.options[optIdx] = document.getElementById(`q-opt-${idx}-${optIdx}`).value;
-                });
-                q.feedback = document.getElementById(`q-feedback-${idx}`).value;
-                q.supplement = document.getElementById(`q-supplement-${idx}`).value;
+                const qEdit = document.createElement('div');
+                qEdit.className = 'edit-section';
+                qEdit.innerHTML = `
+                    <h4 style="color: #38bdf8; margin-bottom: 15px;">Pergunta ${idx + 1}</h4>
+                    <label class="edit-label">Texto da Pergunta:</label>
+                    <input type="text" class="edit-input" id="q-text-${idx}" value="${q.question}">
+                    ${q.options.map((opt, optIdx) => `
+                        <label class="edit-label">Opção ${String.fromCharCode(65 + optIdx)}:</label>
+                        <input type="text" class="edit-input" id="q-opt-${idx}-${optIdx}" value="${opt}">
+                    `).join('')}
+                    <label class="edit-label">Feedback/Resposta Correta:</label>
+                    <textarea class="edit-input" id="q-feedback-${idx}" style="min-height: 80px;">${q.feedback}</textarea>
+                    <label class="edit-label">Suplemento Associado:</label>
+                    <input type="text" class="edit-input" id="q-supplement-${idx}" value="${q.supplement}">
+                `;
+                editableDiv.appendChild(qEdit);
             });
-
-            alert('✓ Alterações guardadas com sucesso!');
-            toggleSettings();
         }
+    }
 
-        function toggleDiscountOption() {
-            const section = document.getElementById('discountSection');
-            section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    function saveEdits() {
+        questions.forEach((q, idx) => {
+            q.question = document.getElementById(`q-text-${idx}`).value;
+            q.options.forEach((_, optIdx) => {
+                q.options[optIdx] = document.getElementById(`q-opt-${idx}-${optIdx}`).value;
+            });
+            q.feedback = document.getElementById(`q-feedback-${idx}`).value;
+            q.supplement = document.getElementById(`q-supplement-${idx}`).value;
+        });
 
-            if (section.style.display === 'block') {
-                document.getElementById('enableDiscount').checked = enableDiscount;
-                document.getElementById('discountCode').value = discountCode;
-            }
+        alert('✓ Alterações guardadas com sucesso!');
+        toggleSettings();
+    }
+
+    function toggleDiscountOption() {
+        const section = document.getElementById('discountSection');
+        section.style.display = section.style.display === 'none' ? 'block' : 'none';
+
+        if (section.style.display === 'block') {
+            document.getElementById('enableDiscount').checked = enableDiscount;
+            document.getElementById('discountCode').value = discountCode;
         }
+    }
 
-        function saveDiscountSettings() {
-            enableDiscount = document.getElementById('enableDiscount').checked;
-            discountCode = document.getElementById('discountCode').value;
-            alert('✓ Configurações de desconto guardadas!');
-            toggleDiscountOption();
+    function saveDiscountSettings() {
+        enableDiscount = document.getElementById('enableDiscount').checked;
+        discountCode = document.getElementById('discountCode').value;
+        alert('✓ Configurações de desconto guardadas!');
+        toggleDiscountOption();
+    }
+
+    // Product modal functions
+    let currentProductQuestion = null;
+
+    function openProductModal(qIdx) {
+        currentProductQuestion = qIdx;
+        const product = questions[qIdx].supplement;
+        document.getElementById('productContent').innerHTML = `
+            <h3 style="color: #38bdf8; margin-bottom: 15px;">Adicionar Link do Produto</h3>
+            <p style="color: #cbd5e1; margin-bottom: 15px;">Suplemento: <strong>${product}</strong></p>
+            <p style="color: #cbd5e1; font-size: 0.9em;">Cole o link para o produto no seu site ou loja online.</p>
+        `;
+        document.getElementById('productModal').classList.add('show');
+    }
+
+    function closeProductModal() {
+        document.getElementById('productModal').classList.remove('show');
+    }
+
+    function setProductLink() {
+        const link = document.getElementById('productLink').value;
+        if (link) {
+            alert('✓ Link do produto adicionado com sucesso!');
+            closeProductModal();
+        } else {
+            alert('Por favor, insira um URL válido');
         }
+    }
 
-        // Product modal functions
-        let currentProductQuestion = null;
+    // Chamar verificação de admin ao carregar a página
+    checkAdminAccess();
+</script>
 
-        function openProductModal(qIdx) {
-            currentProductQuestion = qIdx;
-            const product = questions[qIdx].supplement;
-            document.getElementById('productContent').innerHTML = `
-                <h3 style="color: #38bdf8; margin-bottom: 15px;">Adicionar Link do Produto</h3>
-                <p style="color: #cbd5e1; margin-bottom: 15px;">Suplemento: <strong>${product}</strong></p>
-                <p style="color: #cbd5e1; font-size: 0.9em;">Cole o link para o produto no seu site ou loja online.</p>
-            `;
-            document.getElementById('productModal').classList.add('show');
-        }
-
-        function closeProductModal() {
-            document.getElementById('productModal').classList.remove('show');
-        }
-
-        function setProductLink() {
-            const link = document.getElementById('productLink').value;
-            if (link) {
-                // Store link in question data
-                alert('✓ Link do produto adicionado com sucesso!');
-                closeProductModal();
-            } else {
-                alert('Por favor, insira um URL válido');
-            }
-        }
-    </script>
 </body>
 </html>
+
 
