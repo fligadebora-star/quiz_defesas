@@ -447,8 +447,8 @@
         <!-- CONTROLS -->
         <div class="controls">
             <button class="btn btn-primary" onclick="startQuiz()" id="startBtn">Iniciar Quiz</button>
-            <button class="btn btn-secondary settings-toggle" onclick="toggleSettings()">⚙️ Editar Conteúdo</button>
-            <button class="btn btn-secondary" onclick="toggleDiscountOption()">💳 Gerir Desconto</button>
+            <button class="btn btn-secondary settings-toggle" onclick="toggleSettings()" id="editBtn" style="display: none;">⚙️ Editar Conteúdo</button>
+            <button class="btn btn-secondary" onclick="toggleDiscountOption()" id="discountBtn" style="display: none;">💳 Gerir Desconto</button>
         </div>
 
         <!-- SETTINGS SECTION -->
@@ -747,12 +747,32 @@
             }
         ];
 
-        let questions = [...defaultQuestions];
+          let questions = [...defaultQuestions];
         let currentQuestion = 0;
         let score = 0;
         let answered = [];
         let enableDiscount = true;
-        let discountCode = "SAUDE2024";
+        let discountCode = "LIGA_IMUN_QUIZ";
+        let isAdmin = false;
+
+        // Verificar se o utilizador é administrador (via URL)
+        function checkAdminAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const adminKey = urlParams.get('admin');
+            if (adminKey === 'fligacol2023') {
+                isAdmin = true;
+                const editBtn = document.getElementById('editBtn');
+                const discountBtn = document.getElementById('discountBtn');
+                if (editBtn) editBtn.style.display = 'inline-block';
+                if (discountBtn) discountBtn.style.display = 'inline-block';
+            }
+        }
+
+        // Chamar ao carregar a página
+        checkAdminAccess();
+
+        // Initialize quiz
+        function initQuiz() {
 
         // Initialize quiz
         function initQuiz() {
@@ -987,3 +1007,4 @@
     </script>
 </body>
 </html>
+
