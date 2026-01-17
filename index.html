@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz das Defesas – Farmácia da Liga</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+  <div class="quiz-page">
+    <header class="quiz-header">
+      <div class="quiz-brand">
+        <span class="quiz-logo">🛡️</span>
+        <div>
+          <h1>Quiz das Defesas</h1>
+          <p>Teste rápido sobre sistema imunitário e suplementos.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="quiz-main">
+      <div class="hero-image"></div>
+
+      <section class="quiz-card" id="quizCard">
+        <div class="quiz-progress">
+          <span id="questionCounter">Pergunta 1 de 20</span>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <h2 class="quiz-question" id="questionText"></h2>
+
+        <ul class="quiz-options" id="optionsList"></ul>
+
+        <div class="quiz-feedback" id="feedbackBox">
+          <p id="feedbackText">Escolha uma opção para ver se acertou.</p>
+        </div>
+
+        <div class="quiz-actions">
+          <button id="prevBtn" class="btn ghost">Anterior</button>
+          <button id="nextBtn" class="btn primary" disabled>Próxima</button>
+        </div>
+      </section>
+
+      <section class="quiz-result hidden" id="resultScreen">
+        <h2>Resultado do seu Quiz</h2>
+        <p id="scoreText"></p>
+        <p id="scoreDetail"></p>
+
+        <div id="discountBox" class="discount-box hidden">
+          <h3>Parabéns! Desbloqueou um vale especial 🎁</h3>
+          <p id="discountText"></p>
+        </div>
+
+        <button id="restartBtn" class="btn secondary">Jogar novamente</button>
+      </section>
+    </main>
+
+    <footer class="quiz-footer">
+      <small>Conteúdo informativo. Não substitui o conselho do seu médico ou farmacêutico.</small>
+    </footer>
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>
