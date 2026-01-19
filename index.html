@@ -440,7 +440,8 @@
             <h1>Sistema Imunitário & Defesas</h1>
             <p class="subtitle">Quiz Interativo - Educação Farmacêutica em Suplementação</p>
             <div class="info-banner">
-                ℹ️ Responda corretamente a todas as 20 questões e ganhe um vale de desconto exclusivo!
+                ℹ️ Responda corretamente a todas as **20** questões e ganhe um vale de desconto exclusivo!
+
             </div>
         </div>
 
@@ -814,7 +815,7 @@
                 const card = document.createElement('div');
                 card.className = 'question-card';
                 card.innerHTML = `
-                    <div class="question-number">Pergunta ${idx + 1} de 20</div>
+                    <div class="question-number">Pergunta ${idx + 1} de ${questions.length}</div>
                     <div class="question-text">${q.question}</div>
                     <div class="options">
                         ${q.options.map((opt, optIdx) => `
@@ -1022,6 +1023,7 @@
     </script>
 </body>
 </html>
+
 
 
 
