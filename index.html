@@ -460,6 +460,7 @@
         function startQuiz() {
             document.getElementById('quizStartSection').classList.remove('active');
             document.getElementById('quizSection').classList.add('active');
+            document.getElementById('resultsSection').classList.remove('active');
             initQuiz();
         }
 
@@ -583,7 +584,10 @@
 
         function restartQuiz() {
             document.getElementById('resultsSection').classList.remove('active');
+            document.getElementById('quizSection').classList.remove('active');
             document.getElementById('quizStartSection').classList.add('active');
+            score = 0;
+            answered = [];
         }
 
         function toggleSettings() {
