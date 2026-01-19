@@ -885,15 +885,9 @@
             feedback.textContent = question.feedback;
             feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
 
-            if (isCorrect && !answered[qIdx + 1]) {
+            if (isCorrect) {
                 score++;
             }
-
-            setTimeout(() => {
-                if (qIdx < questions.length - 1) {
-                    nextQuestion();
-                }
-            }, 2000);
         }
 
         function nextQuestion() {
