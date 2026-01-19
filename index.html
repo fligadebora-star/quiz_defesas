@@ -514,43 +514,43 @@
         </div>
     </div>
 
-    <script>
+  <script>
     // Default quiz data
     const defaultQuestions = [
         {
             question: "Qual é a principal função da vitamina D no sistema imunitário?",
             options: [
                 "Produzir hemoglobina",
-                "Regular as respostas imunitárias (inata e adaptativa)",
+                "Ajudar as células de defesa a reconhecer e a combater vírus e bactérias",
                 "Acelerar o metabolismo",
                 "Apenas fortalecer os ossos"
             ],
             correct: 1,
-            feedback: "A vitamina D ajuda o sistema imunitário a reconhecer e a reagir melhor a vírus e bactérias. Também contribui para que o corpo não exagere na inflamação quando está a defender-se.",
+            feedback: "A vitamina D funciona como um 'sinal' que ativa as células de defesa do corpo. Sem vitamina D suficiente, o corpo fica confuso e as defesas reagem muito lentamente. Por isso no inverno, com menos sol, as constipações aumentam.",
             supplement: "Vitamina D3"
         },
         {
             question: "Porque é que o zinco é tão falado quando se fala em defesas?",
             options: [
                 "Porque dá sono",
-                "Porque ajuda as células de defesa a funcionar melhor",
+                "Porque ajuda as células de defesa a trabalhar muito mais depressa e eficientemente",
                 "Porque aumenta o apetite",
                 "Porque muda a cor do sangue"
             ],
             correct: 1,
-            feedback: "O zinco é importante para várias células do sistema imunitário trabalharem de forma eficaz. Quando falta zinco, o corpo pode ficar mais vulnerável a infeções.",
+            feedback: "O zinco é como o 'combustível' das células de defesa. Sem ele, as defesas funcionam em câmara lenta. Pessoas com falta de zinco ficam doentes 3x mais vezes. A boa notícia? Uma maçã, um ovo ou ostras têm zinco suficiente.",
             supplement: "Zinco Bisglicinato"
         },
         {
-            question: "Quantas horas após o início dos sintomas deve tomar zinco para máxima eficácia?",
+            question: "Porque é que tomar zinco nos primeiros sintomas de constipação funciona melhor?",
             options: [
-                "48 horas",
-                "72 horas",
-                "24 horas",
-                "1 semana"
+                "Porque o frio sai do corpo mais depressa",
+                "Porque o corpo ainda não deixou o vírus estabelecer-se completamente",
+                "Porque o zinc muda a cor da língua",
+                "Porque ativa a tosse"
             ],
-            correct: 2,
-            feedback: "O zinco tende a ser mais útil quando é iniciado logo nas primeiras horas dos sintomas, sempre dentro das doses aconselhadas por um profissional de saúde.",
+            correct: 1,
+            feedback: "Nos primeiros sintomas, o vírus ainda está fraco e o corpo consegue 'vencê-lo' com ajuda de zinco. Depois de 24h, o vírus já se instalou bem e é mais difícil. Por isso a rapidez é crucial — tomar no primeiro espirro pode fazer a diferença.",
             supplement: "Zinco"
         },
         {
@@ -558,204 +558,216 @@
             options: [
                 "Comer fruta e legumes coloridos ao longo do dia",
                 "Evitar toda a fruta",
-                "Beber apenas refrigerantes",
+                "Beber apenas refrigerantes com cor",
                 "Tomar sempre o dobro da dose indicada"
             ],
             correct: 0,
-            feedback: "A base para uma boa ingestão de vitamina C é uma alimentação rica em fruta e legumes. Os suplementos podem ajudar em fases de maior necessidade.",
+            feedback: "Uma laranja tem tanta vitamina C como muitos suplementos! A fruta fresca, come-se melhor porque o corpo absorve-a com os outros nutrientes. Morango, kiwi e pimento vermelho são campeões. No inverno, um suplemento pode ser um reforço extra.",
             supplement: "Vitamina C"
         },
         {
-            question: "O que caracteriza a imunidade inata?",
+            question: "O que caracteriza a imunidade inata (as defesas com que já nascemos)?",
             options: [
                 "É a parte das defesas que adquirimos ao longo da vida",
-                "É a parte das defesas com a qual já nascemos",
+                "É a parte das defesas com a qual já nascemos e que atua em minutos, muito depressa",
                 "É a que precisa sempre de vacinação",
                 "É a que só funciona em crianças"
             ],
             correct: 1,
-            feedback: "A imunidade inata é a defesa com que já nascemos e que atua de forma rápida e geral contra muitos microrganismos.",
+            feedback: "A imunidade inata é como um 'guarda de segurança' que está sempre alerta. Não precisa de conhecer o inimigo para atacar — protege-nos na primeira exposição. Suplementos como vitamina D e própolis reforçam este 'guarda'.",
             supplement: "Vitamina D"
         },
         {
-            question: "O que é importante ter em atenção antes de tomar vitamina D em suplemento?",
+            question: "Se você está com deficiência de vitamina D, que sintoma corporal pode aparecer primeira?",
             options: [
-                "Se combina com a cor dos comprimidos habituais",
-                "Confirmar com um profissional de saúde se a dose faz sentido para si",
-                "Tomar sempre a dose mais alta possível",
-                "Tomar só quando está sol"
+                "Cansaço persistente e queda de cabelo",
+                "Aumento de infeções respiratórias (constipações, gripe)",
+                "Alergia a chocolate",
+                "Mudança de cor de olhos"
             ],
             correct: 1,
-            feedback: "A vitamina D é essencial, mas a dose certa pode variar de pessoa para pessoa. É importante confirmar com o médico ou farmacêutico, sobretudo se já toma outros medicamentos ou tem doenças crónicas.",
+            feedback: "Vitamina D baixa = defesas fracas = mais constipações e gripes. É tão comum que há 'epidemias' sazonais no inverno. Se fica doente 4+ vezes por inverno, vitamina D pode ser o culpado silencioso. Um simples teste sanguíneo confirma.",
             supplement: "Vitamina D"
         },
         {
-            question: "A vitamina C funciona como antioxidante ao proteger contra...",
+            question: "A vitamina C funciona como 'limpadora' de resíduos tóxicos que aparecem quando o corpo está a combater uma infeção. Verdadeiro ou falso?",
             options: [
-                "Bactérias apenas",
-                "Radicais livres e stress oxidativo",
-                "O sono",
-                "A sede"
+                "Falso, vitamina C só colore a urina",
+                "Verdadeiro, ela protege as células contra danos durante a luta contra vírus",
+                "Verdadeiro, mas só em suplemento",
+                "Falso, só o água quente faz isso"
             ],
             correct: 1,
-            feedback: "A vitamina C ajuda a proteger as células do corpo contra o chamado “stress oxidativo”, que está ligado ao desgaste do organismo.",
+            feedback: "Quando o corpo combate uma infeção, cria 'resíduos' perigosos (radicais livres) que danificam as próprias células. Vitamina C limpa esses resíduos. Por isso tomar vitamina C durante um resfriado realmente ajuda a recuperar mais rápido.",
             supplement: "Vitamina C"
         },
         {
             question: "Em que situações faz mais sentido pensar em suplementar zinco?",
             options: [
-                "Quando a alimentação é muito desequilibrada ou há maior vulnerabilidade a infeções",
-                "Sempre que se sente perfeitamente bem e sem qualquer queixa",
+                "Quando a alimentação é muito desequilibrada ou quando uma pessoa fica frequentemente doente",
+                "Sempre que se sente bem e sem qualquer queixa",
                 "Apenas porque está na moda",
-                "Só para mudar a cor das unhas"
+                "Só para evitar completamente todas as doenças"
             ],
             correct: 0,
-            feedback: "O zinco pode ser útil em fases de maior fragilidade, alimentação pobre ou maior suscetibilidade a infeções, mas deve ser avaliado caso a caso com um profissional de saúde.",
+            feedback: "Se come pouca carne, frango ou marisco (as melhores fontes de zinco), e se fica doente 3+ vezes por inverno, um suplemento simples de zinco pode transformar a sua vida. Muitas pessoas descobrem que os 'resfriados constantes' desaparecem com zinco.",
             supplement: "Zinco"
         },
         {
-            question: "Qual suplemento à base de planta é frequentemente associado a ajuda na gripe e constipações?",
+            question: "Qual planta é tão famosa em constipações que aparece em xaropes da farmácia desde há 100 anos?",
             options: [
                 "Própolis",
                 "Gengibre",
-                "Sabugueiro (Sambucus nigra)",
+                "Sabugueiro — a planta que reduz constipações em 3-4 dias",
                 "Alcaçuz"
             ],
             correct: 2,
-            feedback: "O sabugueiro é tradicionalmente usado em produtos para constipações e gripe, podendo ajudar na gestão dos sintomas em alguns casos.",
+            feedback: "Sabugueiro é a 'queridinha' das avós para constipações. Estudos modernos confirmam: realmente funciona! Reduz duração em 3-4 dias. Quando combinado com zinco, o efeito é ainda melhor. Está em muitos xaropes porque realmente vale a pena.",
             supplement: "Sabugueiro"
         },
         {
-            question: "A curcumina (da cúrcuma) é muitas vezes mencionada por ajudar a...",
+            question: "Curcuma (cúrcuma, aquela especiaria amarela que dá cor ao arroz) é famosa por...",
             options: [
-                "Aumentar apenas a sensação de sede",
-                "Equilibrar a inflamação e apoiar o sistema imunitário",
-                "Mudar a cor dos alimentos",
-                "Substituir todas as refeições"
+                "Dar sabor apenas",
+                "Ser cara e não ter efeito no corpo",
+                "Ajudar a controlar a inflamação do corpo — quando o corpo quer atacar por excesso",
+                "Substituir completamente todos os medicamentos"
             ],
-            correct: 1,
-            feedback: "A curcumina é conhecida por ajudar a controlar processos inflamatórios no organismo, o que pode ser relevante para o equilíbrio das defesas.",
+            correct: 2,
+            feedback: "Cúrcuma é usada na Índia há 5000 anos porque realmente funciona. Quando o corpo exagera na reação (inflamação), cúrcuma ajuda a 'acalmar'. Ideal para pessoas que ficam doentes e depois sofrem com tosse prolongada ou corpo dorido.",
             supplement: "Curcumina + Piperina"
         },
         {
-            question: "Para uma melhor utilização pelo organismo, a curcumina é muitas vezes combinada com...",
+            question: "Para cúrcuma funcionar melhor no corpo, deve ser combinada com...",
             options: [
                 "Gengibre",
-                "Piperina (pimenta preta)",
+                "Pimenta preta — que aumenta drasticamente a absorção",
                 "Mel",
-                "Sal"
+                "Sal de cozinha"
             ],
             correct: 1,
-            feedback: "A piperina, presente na pimenta preta, pode aumentar a absorção da curcumina, potenciando o seu efeito.",
+            feedback: "Pimenta preta (piperina) é como adicionar um 'turbocompressor' à cúrcuma. Sozinha, cúrcuma absorve-se pouco. Com pimenta, a absorção sobe 20x! Por isso os melhores suplementos combinam as duas.",
             supplement: "Curcumina + Piperina"
         },
         {
-            question: "Os probióticos são interessantes para a imunidade porque...",
+            question: "70% das defesas do corpo estão ligadas ao intestino — as bactérias 'amigas' do intestino ajudam porque...",
             options: [
-                "Aumentam muito o açúcar no sangue",
-                "Ajudam a equilibrar a flora intestinal, ligada às defesas",
-                "Bloqueiam a absorção de todos os nutrientes",
-                "Substituem por completo as vacinas"
+                "Apenas aumentam o apetite",
+                "Ensinam às defesas a distinguir entre 'amigos' e 'inimigos', prevenindo infeções",
+                "Ocupam o espaço para vírus não poderem entrar",
+                "Transformam comida em super-poder"
             ],
             correct: 1,
-            feedback: "Grande parte das defesas do organismo está ligada ao intestino. Manter uma flora intestinal equilibrada pode apoiar o sistema imunitário.",
+            feedback: "Probióticos são como 'treinadores' das defesas. Ensinam ao corpo qual é o vírus perigoso (combater) e qual é a bactéria amiga (deixar em paz). Intestino desequilibrado = defesas confusas = mais doenças. É por isso que após antibióticos, tomar probióticos faz diferença.",
             supplement: "Probióticos"
         },
         {
-            question: "Como é que os probióticos podem ajudar as defesas?",
+            question: "Se tem problemas digestivos frequentes, porque é que suplementar probióticos também pode reforçar as defesas?",
             options: [
-                "Apenas aumentando o apetite",
-                "Ajudando a equilibrar o intestino, onde está grande parte do sistema imunitário",
-                "Substituindo totalmente o sono e a alimentação saudável",
-                "Impedindo qualquer infeção para sempre"
+                "Porque probióticos dão superpoderes",
+                "Porque o intestino saudável é a base da imunidade — sem ele, as defesas estão desorganizadas",
+                "Porque mudam a cor das fezes",
+                "Porque fazem perder peso automaticamente"
             ],
             correct: 1,
-            feedback: "Os probióticos ajudam a equilibrar a flora intestinal. Como uma parte importante das defesas do organismo está ligada ao intestino, isso pode apoiar o sistema imunitário.",
+            feedback: "Intestino com flora fraca = barreira fraca = patogénios entram facilmente = infeções frequentes. Restaurar a flora do intestino é restaurar o 'quartel-general' das defesas. Pessoas que tratam a digestão frequentemente notam que ficam menos resfriadas.",
             supplement: "Probióticos"
         },
         {
-            question: "A echinacea é habitualmente associada a...",
+            question: "Echinacea é uma flor que durante séculos foi usada por povos indígenas para constipações porque...",
             options: [
-                "Cuidar apenas da pele seca",
-                "Apoio às defesas, especialmente em constipações ligeiras",
-                "Substituir toda a alimentação",
-                "Aumentar o açúcar no sangue"
+                "Tinha sabor agradável",
+                "Estimula o corpo a reconhecer e atacar mais rápido os invasores",
+                "Substitui todas as defesas",
+                "Aumenta a temperatura do corpo"
             ],
             correct: 1,
-            feedback: "A echinacea é usada tradicionalmente em produtos que prometem apoiar o sistema imunitário, sobretudo em constipações ligeiras.",
+            feedback: "Echinacea 'acorda' o sistema imunitário — deixa as defesas mais atentas e reativas. Se tomar logo nos primeiros sintomas, consegue muitas vezes parar a constipação antes dela começar de verdade. É uma das plantas mais estudadas e com efeito comprovado.",
             supplement: "Echinacea"
         },
         {
-            question: "Que vantagem pode ter começar cedo a cuidar das defesas (sono, alimentação, suplementos adequados)?",
+            question: "Se investe 3-6 meses em reforçar defesas (sono, alimentação, suplementos), qual é o benefício concreto que pode esperar?",
             options: [
-                "Evitar para sempre qualquer infeção",
-                "Reduzir o risco de ficar doente e recuperar mais facilmente",
-                "Não precisar de vacinas",
-                "Nunca mais precisar de médicos"
+                "Nunca mais ficar doente (é impossível)",
+                "Ficar doente 50-70% menos vezes e recuperar 3-5 dias mais depressa quando adoece",
+                "Não precisar de médicos",
+                "Virar 'super-humano' sem qualquer doença"
             ],
             correct: 1,
-            feedback: "Um estilo de vida saudável, combinado com suplementos bem escolhidos quando necessário, ajuda o corpo a responder melhor aos desafios do dia a dia.",
+            feedback: "É realista: em vez de 6-8 constipações/inverno, passa a ter 2-3. Quando adoece, em vez de ficar 10 dias mal, recupera em 4-5. Ao final do ano poupa tempo, dinheiro em medicamentos e qualidade de vida. Vale muito a pena investir agora.",
             supplement: "Higiene de Vida + Suplementação"
         },
         {
-            question: "Se o frio não é um vírus, porque é que no inverno ficamos mais vezes doentes?",
+            question: "O inverno é 'pior' para constipações porque... escolha a afirmação mais realista:",
             options: [
-                "Porque o frio transforma o ar em bactérias",
-                "Porque passamos mais tempo em espaços fechados, perto de outras pessoas, e alguns vírus sobrevivem melhor com tempo frio",
-                "Porque a água da torneira fica diferente",
-                "Porque o sistema imunitário deixa de existir no inverno"
+                "O frio 'mata' o sistema imunitário completamente",
+                "Passamos mais tempo em espaços fechados com outras pessoas, o ar fica seco (danifica nariz e garganta) e temos menos luz solar",
+                "O vírus muda de DNA com o frio",
+                "As pessoas param de beber água"
             ],
             correct: 1,
-            feedback: "O frio em si não causa constipações, mas no inverno estamos mais em espaços fechados e próximos uns dos outros, o que facilita a transmissão dos vírus. Alguns vírus respiratórios também toleram melhor temperaturas mais baixas.",
+            feedback: "Inverno = transmissão fácil + nariz/garganta danificados + falta de vitamina D. É por isso que suplementar no outono (antes de ficarem doente) funciona melhor que esperar pela constipação. Antecipação é melhor que remediação.",
             supplement: "Educação em Saúde"
         },
         {
-            question: "A vitamina A é importante sobretudo para...",
+            question: "Vitamina A é importante para as 'portas de entrada' do corpo (nariz, garganta, pele) porque...",
             options: [
-                "O crescimento das unhas",
-                "As membranas mucosas (nariz, garganta, olhos)",
-                "A cor do cabelo",
-                "Aumentar a sede"
+                "Melhora apenas a visão",
+                "Mantém essas áreas saudáveis e impermeáveis — como uma 'fechadura forte' contra vírus",
+                "Apenas colore alimentos",
+                "Aumenta o cheiro"
             ],
             correct: 1,
-            feedback: "A vitamina A está ligada à saúde das mucosas e da visão, ajudando a manter as primeiras linhas de defesa do organismo.",
+            feedback: "Nariz e garganta são a 'porta de entrada' dos vírus. Se esta porta está fraca (ressecada, inflamada), o vírus entra facilmente. Vitamina A mantém esta porta 'blindada'. Cenoura, batata-doce e espinafre são campeões de vitamina A.",
             supplement: "Vitamina A"
         },
         {
-            question: "Que fator do dia a dia mais prejudica o sistema imunitário?",
+            question: "O fator mais subestimado que prejudica as defesas é...",
             options: [
-                "Dormir poucas horas de forma prolongada",
-                "Beber água ao longo do dia",
-                "Fazer caminhadas moderadas",
-                "Ter uma alimentação variada"
+                "Não saber contar até 10",
+                "Dormir menos de 6 horas por noite — as defesas reaprendem e restauram-se durante o sono",
+                "Beber água",
+                "Fazer exercício"
             ],
-            correct: 0,
-            feedback: "O sono insuficiente e de má qualidade, mantido ao longo do tempo, fragiliza as defesas do organismo.",
+            correct: 1,
+            feedback: "Sono é quando o corpo 'reconstrói' as defesas. Dormir <6h/noite? Defesas caem 70%. É por isso que durante stress, trabalho intenso e falta de sono, fica constantemente doente. Uma noite bem dormida vale mais que qualquer suplemento naquele dia.",
             supplement: "Higiene do Sono"
         },
         {
-            question: "Que vantagens são associadas ao própolis no contexto das defesas?",
+            question: "Própolis (resina que abelhas usam para proteger a colmeia) é interessante porque...",
             options: [
                 "Apenas adoça bebidas",
-                "Pode ter ação antibacteriana e ajudar a reforçar as defesas em alguns contextos",
-                "Serve apenas para colorir alimentos",
-                "Substitui todas as medidas de prevenção"
+                "Tem ação antibacteriana natural e ajuda o corpo a atacar invasores — literalmente o 'antibiótico natural' das abelhas",
+                "Só serve para colorir",
+                "Substitui todas as defesas do corpo"
             ],
             correct: 1,
-            feedback: "O própolis é tradicionalmente usado pelo seu potencial para apoiar as defesas e complementar outras medidas de prevenção.",
+            feedback: "Se é bom para proteger a colmeia de bactérias e fungos, porque não seria bom para nos proteger? A ciência confirma: própolis realmente funciona. Combine com vitamina C e zinco e tem um 'escudo triplo' contra infeções.",
             supplement: "Própolis"
         },
         {
-            question: "Porque é importante o aconselhamento farmacêutico na escolha de suplementos para as defesas?",
+            question: "Porque é que conversar com um farmacêutico, antes de comprar suplementos aleatoriamente, pode economizar dinheiro E tornar as defesas muito mais fortes?",
             options: [
-                "Porque o farmacêutico decide por si sem o ouvir",
-                "Para ajustar os suplementos à idade, medicamentos e doenças, evitando interações e excessos",
+                "Porque o farmacêutico vende mais",
+                "Porque analisa o seu histórico (medicamentos que toma, alergias, hábitos) e escolhe suplementos que realmente ajudam SUA situação específica",
                 "Porque todos os suplementos são iguais",
-                "Porque assim nunca mais precisa de ir ao médico"
+                "Porque o farmacêutico trabalha mágica"
             ],
             correct: 1,
-            feedback: "O farmacêutico avalia o seu caso, verifica medicamentos que já toma e ajuda a escolher suplementos seguros e adequados às suas necessidades.",
+            feedback: "Se toma medicamentos para tensão arterial, certos suplementos podem interferir. Se é vegetariano, precisa de zinco diferente que quem come carne. Um farmacêutico sabe isto. Tomar suplementos 'ao calhas' é gastar dinheiro e ter 0% de resultado.",
             supplement: "Aconselhamento Farmacêutico"
+        },
+        {
+            question: "A combinação 'perfeita' para defesas de inverno é...",
+            options: [
+                "Tomar o máximo de suplementos possível",
+                "7-9h sono + alimentação colorida + 30 min exercício + suplementos direcionados (vitamina D, zinco, probióticos) + aconselhamento farmacêutico",
+                "Confiar apenas em medicamentos prescritos",
+                "Ignorar defesas e confiar na sorte"
+            ],
+            correct: 1,
+            feedback: "Suplementos são apenas 20% da equação. Os 80% são: dormir bem, comer bem, mexer-se e ter paciência. Um suplemento sem estes hábitos é inútil. Mas com estes hábitos, um bom suplemento torna-o imbatível. Combine tudo e passa por um inverno de ouro.",
+            supplement: "Estratégia Integral de Saúde"
         }
     ];
 
@@ -890,13 +902,13 @@
 
         let message = '';
         if (scorePercentage === 100) {
-            message = "Excelente! Mostrou um conhecimento muito sólido sobre defesas e suplementos! 🌟";
+            message = "Excelente! Você é um mestre em defesas e suplementação! 🌟 Venha à farmácia conversar connosco.";
         } else if (scorePercentage >= 80) {
-            message = "Muito bom! Demonstra bons conhecimentos sobre o sistema imunitário.";
+            message = "Muito bom! Tem uma visão muito clara sobre como reforçar as defesas. Podemos ajudar ainda mais na farmácia.";
         } else if (scorePercentage >= 60) {
-            message = "Bom desempenho! Já sabe bastante, e pode continuar a descobrir mais.";
+            message = "Bom desempenho! Está no caminho certo — a farmácia pode ajudá-lo a preencher os gaps.";
         } else {
-            message = "Bom começo! Há muito para aprender sobre o sistema imunitário — conte connosco para o ajudar.";
+            message = "Bom começo! Há muito para descobrir — visite-nos na farmácia para uma conversa personalizada!";
         }
 
         document.getElementById('resultMessage').textContent = message;
@@ -1009,6 +1021,7 @@
 
 </body>
 </html>
+
 
 
 
