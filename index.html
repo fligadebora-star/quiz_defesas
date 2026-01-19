@@ -497,7 +497,7 @@
                 <div class="score" id="scoreDisplay">0/20</div>
                 <div class="results-message" id="resultMessage"></div>
                 <div class="discount-badge" id="discountBadge" style="display: none;">
-                    🎁 Vale de 10% de Desconto Desbloqueado!
+                    🎁 Vale de 5% de Desconto Desbloqueado!
                     <br><small style="font-size: 0.7em; margin-top: 10px; display: block;">Código: <span id="discountCodeDisplay">SAUDE2024</span></small>
                 </div>
                 <button class="btn btn-primary" onclick="restartQuiz()" style="margin-top: 30px;">Repetir Quiz</button>
@@ -903,7 +903,7 @@
             document.getElementById('scoreDisplay').textContent = `${score}/20`;
 
             let message = '';
-            if (scorePercentage === 100) {
+           if (score === questions.length) {
                 message = "Excelente! Você é um especialista em suplementação e imunidade! 🌟";
             } else if (scorePercentage >= 80) {
                 message = "Muito bom! Demonstra sólidos conhecimentos sobre defesas e suplementos.";
@@ -915,8 +915,13 @@
 
             document.getElementById('resultMessage').textContent = message;
 
-            const discountBadge = document.getElementById('discountBadge');
-            if (enableDiscount && score === questions.length) {
+              const discountBadge = document.getElementById('discountBadge');
+            if (enableDiscount && score === 20) {
+                discountBadge.style.display = 'block';
+                document.getElementById('discountCodeDisplay').textContent = discountCode;
+            } else {
+                discountBadge.style.display = 'none';
+            }
                 discountBadge.style.display = 'block';
                 document.getElementById('discountCodeDisplay').textContent = discountCode;
             } else {
@@ -1023,6 +1028,7 @@
     </script>
 </body>
 </html>
+
 
 
 
