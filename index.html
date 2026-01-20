@@ -278,7 +278,7 @@
         }
 
         function avancar(){
-            if(atual<TOTAL){
+            if(atual<TOTAL+1){
                 atual++;
                 document.querySelectorAll('.question-card').forEach((c,i)=>c.style.display=i===atual?'block':'none');
                 atualizarNav();
@@ -315,4 +315,5 @@
     </script>
 </body>
 </html>
+
 
