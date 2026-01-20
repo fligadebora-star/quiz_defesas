@@ -223,7 +223,7 @@
 
         let atual=0,pontuacao=0,respostas=[];
         const TOTAL = perguntas.length;
-        console.log("🎯 TOTAL DE PERGUNTAS:",TOTAL);
+        console.log("🎯 TOTAL DE PERGUNTAS:",TOTAL+1);
 
         function iniciar(){
             document.getElementById('start').classList.remove('active');
@@ -278,7 +278,7 @@
         }
 
         function avancar(){
-            if(atual<TOTAL-1){
+            if(atual<TOTAL){
                 atual++;
                 document.querySelectorAll('.question-card').forEach((c,i)=>c.style.display=i===atual?'block':'none');
                 atualizarNav();
@@ -315,3 +315,4 @@
     </script>
 </body>
 </html>
+
