@@ -4,7 +4,7 @@
 const DISCOUNT_ENABLED = true;          // coloca false para retirar
 const DISCOUNT_PERCENT = 10;
 const DISCOUNT_CODE = "DEFESAS10";
-const DISCOUNT_MIN_SCORE = 20;          // nº de respostas certas
+// DISCOUNT_MIN_SCORE será definido dinamicamente após as perguntas
 
 // Perguntas para público geral
 const questions = [
@@ -150,142 +150,154 @@ const questions = [
   }
 ];
 
-// Lógica do quiz
-let currentIndex = 0;
-let score = 0;
-let answered = false;
+// Define o limiar de desconto com base no número de perguntas (por exemplo: todas)
+const DISCOUNT_MIN_SCORE = questions.length; // requer todas as respostas corretas por omissão
 
-const questionText = document.getElementById("questionText");
-const optionsList = document.getElementById("optionsList");
-const feedbackBox = document.getElementById("feedbackBox");
-const feedbackText = document.getElementById("feedbackText");
-const questionCounter = document.getElementById("questionCounter");
-const progressFill = document.getElementById("progressFill");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+// Lógica do quiz — aguarda DOM
+window.addEventListener('DOMContentLoaded', () => {
+  // Estado
+  let currentIndex = 0;
+  let score = 0;
+  let answered = false;
 
-const quizCard = document.getElementById("quizCard");
-const resultScreen = document.getElementById("resultScreen");
-const scoreText = document.getElementById("scoreText");
-const scoreDetail = document.getElementById("scoreDetail");
-const discountBox = document.getElementById("discountBox");
-const discountText = document.getElementById("discountText");
-const restartBtn = document.getElementById("restartBtn");
+  // Elementos (espera DOMContentLoaded para garantir existência)
+  const questionText = document.getElementById("questionText");
+  const optionsList = document.getElementById("optionsList");
+  const feedbackBox = document.getElementById("feedbackBox");
+  const feedbackText = document.getElementById("feedbackText");
+  const questionCounter = document.getElementById("questionCounter");
+  const progressFill = document.getElementById("progressFill");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
 
-renderQuestion();
+  const quizCard = document.getElementById("quizCard");
+  const resultScreen = document.getElementById("resultScreen");
+  const scoreText = document.getElementById("scoreText");
+  const scoreDetail = document.getElementById("scoreDetail");
+  const discountBox = document.getElementById("discountBox");
+  const discountText = document.getElementById("discountText");
+  const restartBtn = document.getElementById("restartBtn");
 
-function renderQuestion() {
-  const q = questions[currentIndex];
-  answered = false;
-  nextBtn.disabled = true;
-
-  questionCounter.textContent = `Pergunta ${currentIndex + 1} de ${questions.length}`;
-  const percent = (currentIndex / questions.length) * 100;
-  progressFill.style.width = `${percent}%`;
-
-  questionText.textContent = q.text;
-
-  optionsList.innerHTML = "";
-  q.options.forEach((opt, idx) => {
-    const li = document.createElement("li");
-    li.className = "quiz-option";
-    li.dataset.index = idx;
-
-    const bullet = document.createElement("span");
-    bullet.className = "bullet";
-    bullet.textContent = String.fromCharCode(65 + idx);
-
-    const text = document.createElement("span");
-    text.textContent = opt;
-
-    li.appendChild(bullet);
-    li.appendChild(text);
-    li.addEventListener("click", () => handleAnswer(idx));
-
-    optionsList.appendChild(li);
-  });
-
-  feedbackBox.classList.remove("correct", "incorrect");
-  feedbackText.textContent = "Escolha uma opção para ver se acertou.";
-
-  prevBtn.disabled = currentIndex === 0;
-}
-
-function handleAnswer(selectedIndex) {
-  if (answered) return;
-
-  const q = questions[currentIndex];
-  const options = optionsList.querySelectorAll(".quiz-option");
-
-  answered = true;
-  nextBtn.disabled = false;
-
-  options.forEach((opt) => {
-    opt.classList.remove("selected", "correct", "incorrect");
-  });
-
-  const selectedLi = options[selectedIndex];
-  selectedLi.classList.add("selected");
-
-  const isCorrect = selectedIndex === q.correctIndex;
-
-  if (isCorrect) {
-    score++;
-    selectedLi.classList.add("correct");
-    feedbackBox.classList.remove("incorrect");
-    feedbackBox.classList.add("correct");
-    feedbackText.textContent = q.feedbackCorrect + " " + q.supplementTip;
-  } else {
-    selectedLi.classList.add("incorrect");
-    const correctLi = options[q.correctIndex];
-    correctLi.classList.add("correct");
-    feedbackBox.classList.remove("correct");
-    feedbackBox.classList.add("incorrect");
-    feedbackText.textContent = q.feedbackWrong + " " + q.supplementTip;
-  }
-}
-
-nextBtn.addEventListener("click", () => {
-  if (!answered) return;
-
-  if (currentIndex < questions.length - 1) {
-    currentIndex++;
-    renderQuestion();
-  } else {
-    showResult();
-  }
-});
-
-prevBtn.addEventListener("click", () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    renderQuestion();
-  }
-});
-
-restartBtn.addEventListener("click", () => {
-  currentIndex = 0;
-  score = 0;
-  quizCard.classList.remove("hidden");
-  resultScreen.classList.add("hidden");
+  // Render primeira pergunta
   renderQuestion();
-});
 
-function showResult() {
-  quizCard.classList.add("hidden");
-  resultScreen.classList.remove("hidden");
+  function renderQuestion() {
+    const q = questions[currentIndex];
+    answered = false;
+    nextBtn.disabled = true;
 
-  scoreText.textContent = `Acertou ${score} em ${questions.length} perguntas.`;
-  const percent = Math.round((score / questions.length) * 100);
-  scoreDetail.textContent = `Pontuação: ${percent}%.`;
+    questionCounter.textContent = `Pergunta ${currentIndex + 1} de ${questions.length}`;
+    // Mostrar progresso com base na pergunta atual (1..N)
+    const percent = ((currentIndex + 1) / questions.length) * 100;
+    progressFill.style.width = `${Math.min(100, Math.max(0, percent))}%`;
 
-  if (DISCOUNT_ENABLED && score >= DISCOUNT_MIN_SCORE) {
-    discountBox.classList.remove("hidden");
-    discountText.innerHTML =
-      `Como acertou todas as perguntas, desbloqueou um vale de ${DISCOUNT_PERCENT}% em compras selecionadas na nossa farmácia.<br><br>` +
-      `Use o código <strong>${DISCOUNT_CODE}</strong> ao finalizar a compra em ` +
-      `<a href="https://www.farmaciadaliga.pt" target="_blank" rel="noopener noreferrer">www.farmaciadaliga.pt</a>.`;
-  } else {
-    discountBox.classList.add("hidden");
+    questionText.textContent = q.text;
+
+    optionsList.innerHTML = "";
+    q.options.forEach((opt, idx) => {
+      const li = document.createElement("li");
+      li.className = "quiz-option";
+      li.dataset.index = idx;
+
+      const bullet = document.createElement("span");
+      bullet.className = "bullet";
+      bullet.textContent = String.fromCharCode(65 + idx);
+
+      const text = document.createElement("span");
+      text.textContent = opt;
+
+      li.appendChild(bullet);
+      li.appendChild(text);
+      li.addEventListener("click", () => handleAnswer(idx));
+
+      optionsList.appendChild(li);
+    });
+
+    feedbackBox.classList.remove("correct", "incorrect");
+    feedbackText.textContent = "Escolha uma opção para ver se acertou.";
+
+    prevBtn.disabled = currentIndex === 0;
   }
-}
+
+  function handleAnswer(selectedIndex) {
+    if (answered) return;
+
+    const q = questions[currentIndex];
+    const options = optionsList.querySelectorAll(".quiz-option");
+
+    answered = true;
+    nextBtn.disabled = false;
+
+    options.forEach((opt) => {
+      opt.classList.remove("selected", "correct", "incorrect");
+    });
+
+    const selectedLi = options[selectedIndex];
+    selectedLi.classList.add("selected");
+
+    const isCorrect = selectedIndex === q.correctIndex;
+
+    if (isCorrect) {
+      score++;
+      selectedLi.classList.add("correct");
+      feedbackBox.classList.remove("incorrect");
+      feedbackBox.classList.add("correct");
+      feedbackText.textContent = q.feedbackCorrect + " " + q.supplementTip;
+    } else {
+      selectedLi.classList.add("incorrect");
+      const correctLi = options[q.correctIndex];
+      if (correctLi) correctLi.classList.add("correct");
+      feedbackBox.classList.remove("correct");
+      feedbackBox.classList.add("incorrect");
+      feedbackText.textContent = q.feedbackWrong + " " + q.supplementTip;
+    }
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (!answered) return;
+
+    if (currentIndex < questions.length - 1) {
+      currentIndex++;
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderQuestion();
+    }
+  });
+
+  restartBtn.addEventListener("click", () => {
+    currentIndex = 0;
+    score = 0;
+    if (quizCard) quizCard.classList.remove("hidden");
+    if (resultScreen) resultScreen.classList.add("hidden");
+    renderQuestion();
+  });
+
+  function showResult() {
+    if (quizCard) quizCard.classList.add("hidden");
+    if (resultScreen) resultScreen.classList.remove("hidden");
+
+    if (scoreText) scoreText.textContent = `Acertou ${score} em ${questions.length} perguntas.`;
+    const percent = Math.round((score / questions.length) * 100);
+    if (scoreDetail) scoreDetail.textContent = `Pontuação: ${percent}%.`;
+
+    // Exibir desconto se habilitado e atingir limiar (por omissão todas as perguntas)
+    if (DISCOUNT_ENABLED && score >= DISCOUNT_MIN_SCORE) {
+      if (discountBox) discountBox.classList.remove("hidden");
+      if (discountText) {
+        discountText.innerHTML =
+          `Como acertou todas as perguntas, desbloqueou um vale de ${DISCOUNT_PERCENT}% em compras selecionadas na nossa farmácia.<br><br>` +
+          `Use o código <strong>${DISCOUNT_CODE}</strong> ao finalizar a compra em ` +
+          `<a href="https://www.farmaciadaliga.pt" target="_blank" rel="noopener noreferrer">www.farmaciadaliga.pt</a>.`;
+      }
+    } else {
+      if (discountBox) discountBox.classList.add("hidden");
+    }
+  }
+});
