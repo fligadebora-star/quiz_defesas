@@ -205,29 +205,28 @@
     <script>
         const perguntas = [
             { q: "Qual é a principal função da vitamina D no sistema imunitário?", o: ["Produzir hemoglobina", "Ajudar as células de defesa a reconhecer e atacar vírus e bactérias", "Acelerar o metabolismo", "Apenas fortalecer os ossos"], c: 1, f: "A vitamina D funciona como um sinal que ativa as células de defesa do corpo." },
-            { q: "Porque é que o zinco é tão falado quando se fala em defesas?", o: ["Porque dá sono", "Porque ajuda as células de defesa a trabalhar muito mais depressa", "Porque aumenta o apetite", "Porque muda a cor do sangue"], c: 1, f: "O zinco é como combustível das células de defesa. Sem ele, as defesas funcionam em câmara lenta." },
-            { q: "Porque tomar zinco nos primeiros sintomas funciona melhor?", o: ["Porque o frio sai mais depressa", "Porque o corpo ainda não deixou o vírus estabelecer-se", "Porque muda cor da língua", "Porque ativa a tosse"], c: 1, f: "Nos primeiros sintomas, o vírus está fraco e o corpo consegue vencê-lo com zinco." },
-            { q: "Melhor forma de garantir vitamina C todos os dias?", o: ["Comer fruta e legumes coloridos ao longo do dia", "Evitar toda a fruta", "Beber refrigerantes com cor", "Tomar sempre o máximo possível"], c: 0, f: "Uma laranja tem tanta vitamina C como muitos suplementos! Morango, kiwi e pimento são campeões." },
+            { q: "Porque é que o zinco é tão falado quando se fala em defesas?", o: ["Porque dá sono", "Porque muda a cor do sangue", "Porque ajuda as células de defesa a trabalhar muito mais depressa", "Porque aumenta o apetite"], c: 2, f: "O zinco é como combustível das células de defesa. Sem ele, as defesas funcionam em câmara lenta." },
+            { q: "Porque tomar zinco nos primeiros sintomas funciona melhor?", o: ["Porque o corpo ainda não deixou o vírus estabelecer-se", "Porque o frio sai mais depressa", "Porque muda cor da língua", "Porque ativa a tosse"], c: 0, f: "Nos primeiros sintomas, o vírus está fraco e o corpo consegue vencê-lo com zinco." },
+            { q: "Melhor forma de garantir vitamina C todos os dias?", o: ["Evitar toda a fruta", "Beber refrigerantes com cor", "Tomar sempre o máximo possível", "Comer fruta e legumes coloridos ao longo do dia"], c: 3, f: "Uma laranja tem tanta vitamina C como muitos suplementos! Morango, kiwi e pimento são campeões." },
             { q: "O que caracteriza a imunidade inata?", o: ["Adquirida ao longo da vida", "Primeira linha de defesa com que nascemos e reage em minutos", "Precisa sempre de vacinação", "Só funciona em crianças"], c: 1, f: "Imunidade inata é como guarda de segurança sempre alerta. Não precisa conhecer o inimigo para atacar." },
-            { q: "Sintoma de deficiência de vitamina D?", o: ["Cansaço persistente", "Aumento de infeções respiratórias", "Alergia a chocolate", "Mudança de cor dos olhos"], c: 1, f: "Vitamina D baixa = defesas fracas = mais constipações e gripes, especialmente no inverno." },
-            { q: "Vitamina C funciona como limpadora de resíduos tóxicos?", o: ["Falso, só colore urina", "Verdadeiro, protege células contra danos", "Verdadeiro mas só em suplemento", "Falso, só água faz isso"], c: 1, f: "Durante infeção, o corpo cria resíduos perigosos. Vitamina C limpa esses resíduos e acelera recuperação." },
+            { q: "Sintoma de deficiência de vitamina D?", o: ["Mudança de cor dos olhos", "Aumento de infeções respiratórias", "Alergia a chocolate", "Cansaço persistente"], c: 1, f: "Vitamina D baixa = defesas fracas = mais constipações e gripes, especialmente no inverno." },
+            { q: "Vitamina C funciona como limpadora de resíduos tóxicos?", o: ["Falso, só água faz isso", "Falso, só colore urina", "Verdadeiro mas só em suplemento", "Verdadeiro, protege células contra danos"], c: 3, f: "Durante infeção, o corpo cria resíduos perigosos. Vitamina C limpa esses resíduos e acelera recuperação." },
             { q: "Quando faz sentido suplementar zinco?", o: ["Alimentação desequilibrada ou fica frequentemente doente", "Sempre que se sente bem", "Apenas por moda", "Para evitar todas as doenças"], c: 0, f: "Se come pouca carne/marisco e fica doente 3+ vezes/inverno, zinco pode transformar sua saúde." },
-            { q: "Planta famosa em xaropes há 100 anos?", o: ["Própolis", "Gengibre", "Sabugueiro", "Alcaçuz"], c: 2, f: "Sabugueiro reduz duração de constipações em 3-4 dias. Estudos confirmam que realmente funciona!" },
-            { q: "Porque é a cúrcuma famosa?", o: ["Só dá sabor", "É cara sem efeito", "Ajuda a controlar inflamação", "Substitui medicamentos"], c: 2, f: "Usada há 5000 anos. Quando corpo exagera na reação inflamatória, cúrcuma ajuda a acalmar." },
-            { q: "Com que combinar cúrcuma para melhor absorção?", o: ["Gengibre", "Pimenta preta", "Mel", "Sal"], c: 1, f: "Pimenta preta é turbocompressor para cúrcuma. Sozinha absorve pouco, com pimenta dispara!" },
-            { q: "Porque 70% das defesas estão no intestino?", o: ["Só aumenta apetite", "Bactérias amigas ensinam defesas a distinguir amigos de inimigos", "Ocupam espaço dos vírus", "Transformam comida"], c: 1, f: "Probióticos são treinadores das defesas. Intestino desequilibrado significa defesas confusas." },
-            { q: "Porque probióticos reforçam defesas em problemas digestivos?", o: ["Dão superpoderes", "Intestino saudável é base da imunidade", "Mudam cor das fezes", "Fazem perder peso"], c: 1, f: "Flora fraca = barreira fraca. Restaurar flora intestinal é restaurar quartel-general das defesas." },
-            { q: "Porque Echinacea foi usada por séculos?", o: ["Sabor agradável", "Estimula corpo a reconhecer invasores mais rápido", "Substitui defesas", "Aumenta temperatura"], c: 1, f: "Echinacea acorda o sistema imunitário. Tomada cedo pode parar constipações antes de começar." },
-            { q: "Benefício de investir 3-6 meses em reforçar defesas?", o: ["Nunca mais ficar doente", "Ficar doente 50-70% menos e recuperar 3-5 dias mais rápido", "Não precisar médicos", "Virar super-humano"], c: 1, f: "Em vez de 6-8 constipações/inverno terá 2-3. Recupera em 4-5 dias em vez de 10." }
+            { q: "Planta famosa em xaropes há 100 anos?", o: ["Própolis", "Alcaçuz", "Sabugueiro", "Gengibre"], c: 2, f: "Sabugueiro reduz duração de constipações em 3-4 dias. Estudos confirmam que realmente funciona!" },
+            { q: "Porque é a cúrcuma famosa?", o: ["É cara sem efeito", "Ajuda a controlar inflamação", "Só dá sabor", "Substitui medicamentos"], c: 1, f: "Usada há 5000 anos. Quando corpo exagera na reação inflamatória, cúrcuma ajuda a acalmar." },
+            { q: "Com que combinar cúrcuma para melhor absorção?", o: ["Gengibre", "Mel", "Pimenta preta", "Sal"], c: 2, f: "Pimenta preta é turbocompressor para cúrcuma. Sozinha absorve pouco, com pimenta dispara!" },
+            { q: "Porque 70% das defesas estão no intestino?", o: ["Transformam comida", "Bactérias amigas ensinam defesas a distinguir amigos de inimigos", "Só aumenta apetite", "Ocupam espaço dos vírus"], c: 1, f: "Probióticos são treinadores das defesas. Intestino desequilibrado significa defesas confusas." },
+            { q: "Porque probióticos reforçam defesas em problemas digestivos?", o: ["Mudam cor das fezes", "Fazem perder peso", "Intestino saudável é base da imunidade", "Dão superpoderes"], c: 2, f: "Flora fraca = barreira fraca. Restaurar flora intestinal é restaurar quartel-general das defesas." },
+            { q: "Porque Echinacea foi usada por séculos?", o: ["Estimula corpo a reconhecer invasores mais rápido", "Sabor agradável", "Substitui defesas", "Aumenta temperatura"], c: 0, f: "Echinacea acorda o sistema imunitário. Tomada cedo pode parar constipações antes de começar." },
+            { q: "Benefício de investir 3-6 meses em reforçar defesas?", o: ["Virar super-humano", "Ficar doente 50-70% menos e recuperar 3-5 dias mais rápido", "Não precisar médicos", "Nunca mais ficar doente"], c: 1, f: "Em vez de 6-8 constipações/inverno terá 2-3. Recupera em 4-5 dias em vez de 10." }
         ];
 
         let atual = 0, pontuacao = 0, respostas = [];
         const codigo = "LIGA_QUIZ_IMUNO", desconto = 5;
 
-        console.log("✅ Quiz pronto com", perguntas.length, "perguntas");
+        console.log("✅ Quiz com", perguntas.length, "perguntas - respostas variadas!");
 
         function iniciar() {
-            console.log("▶ Iniciando...");
             document.getElementById('start').classList.remove('active');
             document.getElementById('quiz').classList.add('active');
             atual = 0;
@@ -303,7 +302,6 @@
         }
 
         function finalizar() {
-            console.log("✓ Final:", pontuacao, "/", perguntas.length);
             document.getElementById('quiz').classList.remove('active');
             document.getElementById('resultado').classList.add('active');
             document.getElementById('pontos').textContent = `${pontuacao}/${perguntas.length}`;
