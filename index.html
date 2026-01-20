@@ -234,54 +234,94 @@
         }
 
         function carregar(){
-            const div=document.getElementById('quiz');
-            div.innerHTML='';
+            const div = document.getElementById('quiz');
+            div.innerHTML = '';
+            let criadas = 0;
+
             perguntas.forEach((p,i)=>{
-                const card=document.createElement('div');
-                card.className='question-card';
-                card.style.display=i===atual?'block':'none';
-                card.innerHTML=`
-                    <div class="question-number">Pergunta ${i+1} de ${TOTAL}</div>
-                    <div class="question-text">${p.q}</div>
-                    <div class="options">
-                        ${p.o.map((op,j)=>`<div class="option" onclick="responder(${i},${j})" id="op-${i}-${j}">${String.fromCharCode(65+j)}. ${op}</div>`).join('')}
-                    </div>
-                    <div class="feedback" id="fb-${i}"></div>
-                `;
-                div.appendChild(card);
+                try {
+                    const card = document.createElement('div');
+                    card.className = 'question-card';
+                    card.style.display = i === atual ? 'block' : 'none';
+
+                    const num = document.createElement('div');
+                    num.className = 'question-number';
+                    num.textContent = `Pergunta ${i+1} de ${TOTAL}`;
+
+                    const texto = document.createElement('div');
+                    texto.className = 'question-text';
+                    texto.textContent = p.q;
+
+                    const options = document.createElement('div');
+                    options.className = 'options';
+
+                    // Garantir que p.o é array
+                    if (!Array.isArray(p.o)) throw new Error('Opções inválidas para a pergunta ' + i);
+
+                    p.o.forEach((op,j)=>{
+                        const opt = document.createElement('div');
+                        opt.className = 'option';
+                        opt.id = `op-${i}-${j}`;
+                        // usar textContent evita problemas com caracteres especiais; prefix com letra
+                        opt.innerHTML = `${String.fromCharCode(65+j)}. ${op}`;
+                        opt.addEventListener('click', ()=>responder(i,j));
+                        options.appendChild(opt);
+                    });
+
+                    const fb = document.createElement('div');
+                    fb.className = 'feedback';
+                    fb.id = `fb-${i}`;
+
+                    card.appendChild(num);
+                    card.appendChild(texto);
+                    card.appendChild(options);
+                    card.appendChild(fb);
+
+                    div.appendChild(card);
+                    criadas++;
+                } catch (err) {
+                    console.error('Erro ao criar cartão da pergunta', i, err);
+                }
             });
-            const nav=document.createElement('div');
-            nav.className='navigation';
-            nav.innerHTML=`
+
+            // navegação
+            const nav = document.createElement('div');
+            nav.className = 'navigation';
+            nav.innerHTML = `
                 <button class="btn btn-secondary" onclick="voltar()" id="volt" style="display:none">← Anterior</button>
                 <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
                 <button class="btn btn-primary" onclick="avancar()" id="avan">Próxima →</button>
             `;
             div.appendChild(nav);
+
+            console.log(`Perguntas esperadas: ${TOTAL}, criadas no DOM: ${criadas}`);
             atualizarNav();
         }
 
         function atualizarNav(){
-            document.getElementById('volt').style.display=atual>0?'block':'none';
-            document.getElementById('avan').textContent=atual===TOTAL-1?'Terminar ✓':'Próxima →';
-            // clamp percent to [0,100]
+            document.getElementById('volt').style.display = atual > 0 ? 'block' : 'none';
+            document.getElementById('avan').textContent = atual === TOTAL-1 ? 'Terminar ✓' : 'Próxima →';
             const percent = Math.min(100, Math.max(0, ((atual+1)/TOTAL*100)));
             document.getElementById('prog').style.width = percent + '%';
         }
 
         function responder(i,j){
-            if(respostas[i]!==null)return;
+            if(respostas[i]!==null) return;
             respostas[i]=j;
-            const correto=j===perguntas[i].c;
-            document.getElementById(`op-${i}-${j}`).classList.add('selected');
-            const fb=document.getElementById(`fb-${i}`);
-            fb.textContent=perguntas[i].f;
-            fb.classList.add('show',correto?'correct':'incorrect');
-            if(correto)pontuacao++;
+            const correto = j === perguntas[i].c;
+            const opEl = document.getElementById(`op-${i}-${j}`);
+            if(opEl) opEl.classList.add('selected');
+
+            const fb = document.getElementById(`fb-${i}`);
+            if (fb) {
+                fb.textContent = perguntas[i].f || '';
+                fb.classList.add('show', correto ? 'correct' : 'incorrect');
+            }
+
+            if(correto) pontuacao++;
         }
 
         function avancar(){
-            // avançar enquanto não for a última pergunta; caso contrário finalizar
             if(atual < TOTAL - 1){
                 atual++;
                 document.querySelectorAll('.question-card').forEach((c,i)=>c.style.display=i===atual?'block':'none');
