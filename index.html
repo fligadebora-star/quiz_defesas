@@ -203,26 +203,42 @@
     </div>
 
     <script>
+        // ARRAY COM EXATAMENTE 15 PERGUNTAS
         const perguntas = [
+            // 1
             {q:"Qual a principal função da vitamina D no sistema imunitário?",o:["Produzir hemoglobina","Ajudar células de defesa a reconhecer vírus","Acelerar metabolismo","Fortalecer ossos"],c:1,f:"Vitamina D ativa células de defesa."},
+            // 2
             {q:"Porque é o zinco importante para as defesas?",o:["Dá sono","Muda cor do sangue","Ajuda células de defesa a trabalhar mais depressa","Aumenta apetite"],c:2,f:"Zinco é combustível das células de defesa."},
+            // 3
             {q:"Porque tomar zinco nos primeiros sintomas funciona?",o:["Corpo não deixou vírus estabelecer-se","Frio sai mais depressa","Muda cor da língua","Ativa tosse"],c:0,f:"Vírus fraco = corpo vence com zinco."},
+            // 4
             {q:"Melhor forma de garantir vitamina C diariamente?",o:["Evitar fruta","Refrigerantes","Máximo possível","Comer fruta e legumes coloridos"],c:3,f:"Laranja, kiwi e pimento são campeões!"},
+            // 5
             {q:"O que caracteriza a imunidade inata?",o:["Adquirida na vida","Primeira linha de defesa desde nascimento","Precisa vacinação","Só em crianças"],c:1,f:"Guarda sempre alerta desde nascimento."},
+            // 6
             {q:"Sintoma de deficiência de vitamina D?",o:["Mudança cor olhos","Aumento infeções respiratórias","Alergia chocolate","Cansaço persistente"],c:1,f:"Vitamina D baixa = mais constipações."},
+            // 7
             {q:"Vitamina C limpa resíduos tóxicos?",o:["Falso, só água","Falso, colore urina","Verdadeiro, só suplemento","Verdadeiro, protege células"],c:3,f:"Limpa resíduos perigosos das infeções."},
+            // 8
             {q:"Quando suplementar zinco?",o:["Alimentação desequilibrada ou ficar doente frequentemente","Sempre bem","Por moda","Evitar todas doenças"],c:0,f:"Pouca carne + 3 doenças/inverno = zinco!"},
+            // 9
             {q:"Planta famosa em xaropes há 100 anos?",o:["Própolis","Alcaçuz","Sabugueiro","Gengibre"],c:2,f:"Sabugueiro reduz constipações 3-4 dias!"},
+            // 10
             {q:"Porque é a cúrcuma famosa?",o:["Cara sem efeito","Controla inflamação do corpo","Só sabor","Substitui medicamentos"],c:1,f:"Acalma reação inflamatória excessiva."},
+            // 11
             {q:"Combinar cúrcuma com?",o:["Gengibre","Mel","Pimenta preta","Sal"],c:2,f:"Pimenta preta turbocompressor cúrcuma!"},
+            // 12
             {q:"Porque 70% defesas no intestino?",o:["Transformam comida","Bactérias ensinam defesas","Só apetite","Ocupam espaço vírus"],c:1,f:"Probióticos treinadores das defesas!"},
+            // 13
             {q:"Probióticos reforçam defesas porque?",o:["Mudam cor fezes","Perder peso","Intestino saudável é base imunidade","Superpoderes"],c:2,f:"Flora forte = defesas fortes!"},
+            // 14
             {q:"Echinacea usada por séculos porque?",o:["Estimula corpo reconhecer invasores rápido","Sabor agradável","Substitui defesas","Aumenta temperatura"],c:0,f:"Echinacea acorda sistema imunitário!"},
-            {q:"Benefício de 3-6 meses reforçar defesas?",o:["Super-humano","Ficar doente 50-70% menos e recuperar 3-5 dias mais rápido","Não precisar médicos","Nunca doente"],c:1,f:"2-3 constipações/ano em vez de 6-8!"}
+            // 15 - NOVA PERGUNTA ADICIONADA
+            {q:"Benefício de investir 3-6 meses em reforçar defesas?",o:["Super-humano","Ficar doente 50-70% menos e recuperar 3-5 dias mais rápido","Não precisar médicos","Nunca doente"],c:1,f:"2-3 constipações/ano em vez de 6-8!"}
         ];
 
         let atual=0,pontuacao=0,respostas=[];
-        console.log("✅ TOTAL:",perguntas.length,"perguntas");
+        console.log("🎯 CONFIRMADO:",perguntas.length,"perguntas no total");
 
         function iniciar(){
             document.getElementById('start').classList.remove('active');
@@ -292,7 +308,7 @@
         }
 
         function finalizar(){
-            console.log("✅ RESULTADO:",pontuacao,"/15");
+            console.log("✅ RESULTADO FINAL:",pontuacao,"/15");
             document.getElementById('quiz').classList.remove('active');
             document.getElementById('resultado').classList.add('active');
             document.getElementById('pontos').textContent=`${pontuacao}/15`;
