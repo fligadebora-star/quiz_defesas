@@ -203,163 +203,113 @@
     </div>
 
     <script>
-        // 15 PERGUNTAS - CONFIRMADAS UMA A UMA
         const perguntas = [
-            // PERGUNTA 1
-            { q: "Qual é a principal função da vitamina D no sistema imunitário?", o: ["Produzir hemoglobina", "Ajudar as células de defesa a reconhecer e atacar vírus e bactérias", "Acelerar o metabolismo", "Apenas fortalecer os ossos"], c: 1, f: "A vitamina D ativa as células de defesa do corpo." },
-            
-            // PERGUNTA 2
-            { q: "Porque é que o zinco é tão importante para as defesas?", o: ["Porque dá sono", "Porque muda a cor do sangue", "Porque ajuda as células de defesa a trabalhar muito mais depressa", "Porque aumenta o apetite"], c: 2, f: "O zinco é combustível das células de defesa." },
-            
-            // PERGUNTA 3
-            { q: "Porque tomar zinco nos primeiros sintomas funciona melhor?", o: ["Porque o corpo ainda não deixou o vírus estabelecer-se", "Porque o frio sai mais depressa", "Porque muda cor da língua", "Porque ativa a tosse"], c: 0, f: "Vírus fraco = corpo vence com zinco." },
-            
-            // PERGUNTA 4
-            { q: "Melhor forma de garantir vitamina C diariamente?", o: ["Evitar toda a fruta", "Beber refrigerantes", "Tomar sempre máximo possível", "Comer fruta e legumes coloridos"], c: 3, f: "Laranja, morango, kiwi e pimento são campeões!" },
-            
-            // PERGUNTA 5
-            { q: "O que caracteriza a imunidade inata?", o: ["Adquirida ao longo da vida", "Primeira linha de defesa com que nascemos", "Precisa sempre de vacinação", "Só funciona em crianças"], c: 1, f: "Guarda de segurança sempre alerta desde o nascimento." },
-            
-            // PERGUNTA 6
-            { q: "Principal sintoma de deficiência de vitamina D?", o: ["Mudança de cor dos olhos", "Aumento de infeções respiratórias", "Alergia a chocolate", "Cansaço persistente"], c: 1, f: "Vitamina D baixa = mais constipações e gripes." },
-            
-            // PERGUNTA 7
-            { q: "Vitamina C funciona como limpadora de resíduos tóxicos?", o: ["Falso, só água faz isso", "Falso, só colore urina", "Verdadeiro mas só em suplemento", "Verdadeiro, protege células contra danos"], c: 3, f: "Vitamina C limpa resíduos perigosos das infeções." },
-            
-            // PERGUNTA 8
-            { q: "Quando faz sentido suplementar zinco?", o: ["Alimentação desequilibrada ou ficar frequentemente doente", "Sempre que se sente bem", "Apenas por moda", "Para evitar todas as doenças"], c: 0, f: "Pouca carne/marisco + 3+ doenças/inverno = zinco ajuda!" },
-            
-            // PERGUNTA 9
-            { q: "Qual planta famosa em xaropes há 100 anos?", o: ["Própolis", "Alcaçuz", "Sabugueiro", "Gengibre"], c: 2, f: "Sabugueiro reduz constipações em 3-4 dias!" },
-            
-            // PERGUNTA 10
-            { q: "Porque é a cúrcuma famosa?", o: ["É cara sem efeito", "Ajuda a controlar inflamação do corpo", "Só dá sabor", "Substitui medicamentos"], c: 1, f: "5000 anos de uso! Acalma reação inflamatória excessiva." },
-            
-            // PERGUNTA 11
-            { q: "Com que combinar cúrcuma para melhor absorção?", o: ["Gengibre", "Mel", "Pimenta preta", "Sal"], c: 2, f: "Pimenta preta é turbocompressor da cúrcuma!" },
-            
-            // PERGUNTA 12
-            { q: "Porque 70% das defesas estão no intestino?", o: ["Transformam comida", "Bactérias amigas ensinam defesas a distinguir amigos de inimigos", "Só aumenta apetite", "Ocupam espaço dos vírus"], c: 1, f: "Probióticos são treinadores das defesas!" },
-            
-            // PERGUNTA 13
-            { q: "Porque probióticos reforçam defesas em problemas digestivos?", o: ["Mudam cor das fezes", "Fazem perder peso", "Intestino saudável é base da imunidade", "Dão superpoderes"], c: 2, f: "Flora fraca = barreira fraca. Flora forte = defesas fortes!" },
-            
-            // PERGUNTA 14
-            { q: "Porque Echinacea foi usada por séculos contra constipações?", o: ["Estimula corpo a reconhecer invasores mais rápido", "Sabor agradável", "Substitui defesas", "Aumenta temperatura"], c: 0, f: "Echinacea acorda o sistema imunitário!" },
-            
-            // PERGUNTA 15
-            { q: "Benefício de investir 3-6 meses em reforçar defesas?", o: ["Virar super-humano", "Ficar doente 50-70% menos e recuperar 3-5 dias mais rápido", "Não precisar médicos", "Nunca mais ficar doente"], c: 1, f: "2-3 constipações/ano em vez de 6-8. Recupera em 4-5 dias!" }
+            {q:"Qual a principal função da vitamina D no sistema imunitário?",o:["Produzir hemoglobina","Ajudar células de defesa a reconhecer vírus","Acelerar metabolismo","Fortalecer ossos"],c:1,f:"Vitamina D ativa células de defesa."},
+            {q:"Porque é o zinco importante para as defesas?",o:["Dá sono","Muda cor do sangue","Ajuda células de defesa a trabalhar mais depressa","Aumenta apetite"],c:2,f:"Zinco é combustível das células de defesa."},
+            {q:"Porque tomar zinco nos primeiros sintomas funciona?",o:["Corpo não deixou vírus estabelecer-se","Frio sai mais depressa","Muda cor da língua","Ativa tosse"],c:0,f:"Vírus fraco = corpo vence com zinco."},
+            {q:"Melhor forma de garantir vitamina C diariamente?",o:["Evitar fruta","Refrigerantes","Máximo possível","Comer fruta e legumes coloridos"],c:3,f:"Laranja, kiwi e pimento são campeões!"},
+            {q:"O que caracteriza a imunidade inata?",o:["Adquirida na vida","Primeira linha de defesa desde nascimento","Precisa vacinação","Só em crianças"],c:1,f:"Guarda sempre alerta desde nascimento."},
+            {q:"Sintoma de deficiência de vitamina D?",o:["Mudança cor olhos","Aumento infeções respiratórias","Alergia chocolate","Cansaço persistente"],c:1,f:"Vitamina D baixa = mais constipações."},
+            {q:"Vitamina C limpa resíduos tóxicos?",o:["Falso, só água","Falso, colore urina","Verdadeiro, só suplemento","Verdadeiro, protege células"],c:3,f:"Limpa resíduos perigosos das infeções."},
+            {q:"Quando suplementar zinco?",o:["Alimentação desequilibrada ou ficar doente frequentemente","Sempre bem","Por moda","Evitar todas doenças"],c:0,f:"Pouca carne + 3 doenças/inverno = zinco!"},
+            {q:"Planta famosa em xaropes há 100 anos?",o:["Própolis","Alcaçuz","Sabugueiro","Gengibre"],c:2,f:"Sabugueiro reduz constipações 3-4 dias!"},
+            {q:"Porque é a cúrcuma famosa?",o:["Cara sem efeito","Controla inflamação do corpo","Só sabor","Substitui medicamentos"],c:1,f:"Acalma reação inflamatória excessiva."},
+            {q:"Combinar cúrcuma com?",o:["Gengibre","Mel","Pimenta preta","Sal"],c:2,f:"Pimenta preta turbocompressor cúrcuma!"},
+            {q:"Porque 70% defesas no intestino?",o:["Transformam comida","Bactérias ensinam defesas","Só apetite","Ocupam espaço vírus"],c:1,f:"Probióticos treinadores das defesas!"},
+            {q:"Probióticos reforçam defesas porque?",o:["Mudam cor fezes","Perder peso","Intestino saudável é base imunidade","Superpoderes"],c:2,f:"Flora forte = defesas fortes!"},
+            {q:"Echinacea usada por séculos porque?",o:["Estimula corpo reconhecer invasores rápido","Sabor agradável","Substitui defesas","Aumenta temperatura"],c:0,f:"Echinacea acorda sistema imunitário!"},
+            {q:"Benefício de 3-6 meses reforçar defesas?",o:["Super-humano","Ficar doente 50-70% menos e recuperar 3-5 dias mais rápido","Não precisar médicos","Nunca doente"],c:1,f:"2-3 constipações/ano em vez de 6-8!"}
         ];
 
-        let atual = 0, pontuacao = 0, respostas = [];
-        const codigo = "LIGA_QUIZ_IMUNO", desconto = 5;
+        let atual=0,pontuacao=0,respostas=[];
+        console.log("✅ TOTAL:",perguntas.length,"perguntas");
 
-        console.log("🎯 TOTAL DE PERGUNTAS:", perguntas.length);
-        perguntas.forEach((p, i) => console.log(`${i+1}.`, p.q.substring(0, 30) + "..."));
-
-        function iniciar() {
+        function iniciar(){
             document.getElementById('start').classList.remove('active');
             document.getElementById('quiz').classList.add('active');
-            atual = 0;
-            pontuacao = 0;
-            respostas = new Array(perguntas.length).fill(null);
+            atual=0;pontuacao=0;respostas=new Array(15).fill(null);
             carregar();
         }
 
-        function carregar() {
-            const div = document.getElementById('quiz');
-            div.innerHTML = '';
-            
-            perguntas.forEach((p, i) => {
-                const card = document.createElement('div');
-                card.className = 'question-card';
-                card.style.display = i === atual ? 'block' : 'none';
-                card.innerHTML = `
-                    <div class="question-number">Pergunta ${i + 1} de ${perguntas.length}</div>
+        function carregar(){
+            const div=document.getElementById('quiz');
+            div.innerHTML='';
+            perguntas.forEach((p,i)=>{
+                const card=document.createElement('div');
+                card.className='question-card';
+                card.style.display=i===atual?'block':'none';
+                card.innerHTML=`
+                    <div class="question-number">Pergunta ${i+1} de 15</div>
                     <div class="question-text">${p.q}</div>
                     <div class="options">
-                        ${p.o.map((op, j) => `
-                            <div class="option" onclick="responder(${i}, ${j})" id="op-${i}-${j}">
-                                ${String.fromCharCode(65 + j)}. ${op}
-                            </div>
-                        `).join('')}
+                        ${p.o.map((op,j)=>`<div class="option" onclick="responder(${i},${j})" id="op-${i}-${j}">${String.fromCharCode(65+j)}. ${op}</div>`).join('')}
                     </div>
                     <div class="feedback" id="fb-${i}"></div>
                 `;
                 div.appendChild(card);
             });
-
-            const nav = document.createElement('div');
-            nav.className = 'navigation';
-            nav.innerHTML = `
-                <button class="btn btn-secondary" onclick="voltar()" id="volt" style="display:${atual > 0 ? 'block' : 'none'}">← Anterior</button>
-                <div class="progress-bar"><div class="progress-fill" id="prog" style="width:${((atual + 1) / perguntas.length * 100)}%"></div></div>
-                <button class="btn btn-primary" onclick="avancar()" id="avan">${atual === perguntas.length - 1 ? 'Terminar ✓' : 'Próxima →'}</button>
+            const nav=document.createElement('div');
+            nav.className='navigation';
+            nav.innerHTML=`
+                <button class="btn btn-secondary" onclick="voltar()" id="volt" style="display:${atual>0?'block':'none'}">← Anterior</button>
+                <div class="progress-bar"><div class="progress-fill" id="prog" style="width:${((atual+1)/15*100)}%"></div></div>
+                <button class="btn btn-primary" onclick="avancar()" id="avan">${atual===14?'Terminar ✓':'Próxima →'}</button>
             `;
             div.appendChild(nav);
         }
 
-        function responder(i, j) {
-            if (respostas[i] !== null) return;
-            respostas[i] = j;
-            const correto = j === perguntas[i].c;
+        function responder(i,j){
+            if(respostas[i]!==null)return;
+            respostas[i]=j;
+            const correto=j===perguntas[i].c;
             document.getElementById(`op-${i}-${j}`).classList.add('selected');
-            const fb = document.getElementById(`fb-${i}`);
-            fb.textContent = perguntas[i].f;
-            fb.classList.add('show', correto ? 'correct' : 'incorrect');
-            if (correto) pontuacao++;
+            const fb=document.getElementById(`fb-${i}`);
+            fb.textContent=perguntas[i].f;
+            fb.classList.add('show',correto?'correct':'incorrect');
+            if(correto)pontuacao++;
         }
 
-        function avancar() {
-            if (atual < perguntas.length - 1) {
+        function avancar(){
+            if(atual<14){
                 atual++;
-                document.querySelectorAll('.question-card').forEach((c, i) => c.style.display = i === atual ? 'block' : 'none');
-                document.getElementById('volt').style.display = 'block';
-                document.getElementById('avan').textContent = atual === perguntas.length - 1 ? 'Terminar ✓' : 'Próxima →';
-                document.getElementById('prog').style.width = ((atual + 1) / perguntas.length * 100) + '%';
-            } else {
+                document.querySelectorAll('.question-card').forEach((c,i)=>c.style.display=i===atual?'block':'none');
+                document.getElementById('volt').style.display='block';
+                document.getElementById('avan').textContent=atual===14?'Terminar ✓':'Próxima →';
+                document.getElementById('prog').style.width=((atual+1)/15*100)+'%';
+            }else{
                 finalizar();
             }
         }
 
-        function voltar() {
-            if (atual > 0) {
+        function voltar(){
+            if(atual>0){
                 atual--;
-                document.querySelectorAll('.question-card').forEach((c, i) => c.style.display = i === atual ? 'block' : 'none');
-                document.getElementById('volt').style.display = atual > 0 ? 'block' : 'none';
-                document.getElementById('avan').textContent = 'Próxima →';
-                document.getElementById('prog').style.width = ((atual + 1) / perguntas.length * 100) + '%';
+                document.querySelectorAll('.question-card').forEach((c,i)=>c.style.display=i===atual?'block':'none');
+                document.getElementById('volt').style.display=atual>0?'block':'none';
+                document.getElementById('avan').textContent='Próxima →';
+                document.getElementById('prog').style.width=((atual+1)/15*100)+'%';
             }
         }
 
-        function finalizar() {
-            console.log("✅ RESULTADO:", pontuacao, "/", perguntas.length);
+        function finalizar(){
+            console.log("✅ RESULTADO:",pontuacao,"/15");
             document.getElementById('quiz').classList.remove('active');
             document.getElementById('resultado').classList.add('active');
-            document.getElementById('pontos').textContent = `${pontuacao}/${perguntas.length}`;
-            
-            const perc = Math.round((pontuacao / perguntas.length) * 100);
-            const msgs = {
-                100: "Excelente! Especialista em suplementação! 🌟",
-                80: "Muito bom! Sólidos conhecimentos!",
-                60: "Bom! Continue aprendendo!",
-                0: "Continue estudando!"
-            };
-            document.getElementById('msg').textContent = perc === 100 ? msgs[100] : perc >= 80 ? msgs[80] : perc >= 60 ? msgs[60] : msgs[0];
-            
-            if (pontuacao === perguntas.length) {
-                document.getElementById('vale').style.display = 'block';
-                document.getElementById('cod').textContent = codigo;
-                document.getElementById('perc').textContent = desconto;
+            document.getElementById('pontos').textContent=`${pontuacao}/15`;
+            const perc=Math.round(pontuacao/15*100);
+            const msgs={100:"Excelente! Especialista! 🌟",80:"Muito bom!",60:"Bom!",0:"Continue estudando!"};
+            document.getElementById('msg').textContent=perc===100?msgs[100]:perc>=80?msgs[80]:perc>=60?msgs[60]:msgs[0];
+            if(pontuacao===15){
+                document.getElementById('vale').style.display='block';
+                document.getElementById('cod').textContent="LIGA_QUIZ_IMUNO";
+                document.getElementById('perc').textContent="5";
             }
         }
 
-        function reiniciar() {
+        function reiniciar(){
             document.getElementById('resultado').classList.remove('active');
             document.getElementById('start').classList.add('active');
-            atual = 0;
-            pontuacao = 0;
-            respostas = [];
+            atual=0;pontuacao=0;respostas=[];
         }
     </script>
 </body>
