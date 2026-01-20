@@ -201,4 +201,453 @@
         .feedback.incorrect {
             background: rgba(239, 68, 68, 0.15);
             color: #fca5a5;
-            border-left: 4px solid #ef444
+            border-left: 4px solid #ef4444;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+            transition: width 0.5s ease;
+        }
+
+        .results {
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid rgba(56, 189, 248, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .score {
+            font-size: 4em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #38bdf8, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .results-message {
+            font-size: 1.3em;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .settings-section {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .settings-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #38bdf8;
+        }
+
+        .edit-label {
+            color: #cbd5e1;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 0.9em;
+        }
+
+        .edit-input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 8px;
+            color: #f1f5f9;
+            font-family: inherit;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #38bdf8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .score {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/4b483110-a690-4316-9e5d-ae3237642289.png" alt="Sistema Imunitário Premium" class="premium-image">
+            <h1>Sistema Imunitário & Defesas</h1>
+            <p class="subtitle">Quiz Interativo - Educação Farmacêutica em Suplementação</p>
+            <div class="info-banner">
+                ℹ️ Responda corretamente a todas as 15 questões e ganhe um vale de desconto exclusivo!
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="startQuiz()" id="startBtn">Iniciar Quiz</button>
+            <button class="btn btn-secondary" onclick="toggleDiscountOption()" id="discountBtn" style="display: none;">💳 Gerir Desconto</button>
+        </div>
+
+        <div class="settings-section" id="discountSection" style="display: none;">
+            <div class="settings-title">💳 Configurações de Desconto</div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="enableDiscount" checked>
+                <label for="enableDiscount" style="margin: 0; cursor: pointer;">Ativar vale de 5% de desconto</label>
+            </div>
+            <label class="edit-label">Código de Desconto:</label>
+            <input type="text" class="edit-input" id="discountCode" placeholder="Ex: LIGA_QUIZ_IMUNO" value="LIGA_QUIZ_IMUNO">
+            <label class="edit-label">Valor de Desconto (%):</label>
+            <input type="number" class="edit-input" id="discountPercent" placeholder="5" value="5" min="1" max="100">
+            <button class="btn btn-primary" onclick="saveDiscountSettings()" style="margin-top: 20px;">Guardar Configurações</button>
+            <button class="btn btn-secondary" onclick="toggleDiscountOption()" style="margin-top: 10px;">Fechar</button>
+        </div>
+
+        <div class="quiz-section active" id="quizStartSection">
+            <div class="question-card" style="text-align: center; padding: 60px 30px;">
+                <h2>Bem-vindo ao Quiz de Imunidade!</h2>
+                <p style="margin-top: 20px; font-size: 1.1em; color: #cbd5e1;">
+                    Teste os seus conhecimentos sobre o sistema imunitário e os suplementos mais eficazes para reforçar as suas defesas. 
+                    <br><br>
+                    Clique em "Iniciar Quiz" para começar!
+                </p>
+            </div>
+        </div>
+
+        <div class="quiz-section" id="quizSection"></div>
+
+        <div class="quiz-section" id="resultsSection">
+            <div class="results">
+                <h2>Parabéns! 🎉</h2>
+                <div class="score" id="scoreDisplay">0/15</div>
+                <div class="results-message" id="resultMessage"></div>
+                <div class="discount-badge" id="discountBadge" style="display: none;">
+                    🎁 Vale de <span id="discountPercentDisplay">5</span>% de Desconto Desbloqueado!
+                    <br><small style="font-size: 0.7em; margin-top: 10px; display: block;">Código: <span id="discountCodeDisplay">LIGA_QUIZ_IMUNO</span></small>
+                </div>
+                <button class="btn btn-primary" onclick="restartQuiz()" style="margin-top: 30px;">Repetir Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const defaultQuestions = [
+            {
+                question: "Qual é a principal função da vitamina D no sistema imunitário?",
+                options: ["Produzir hemoglobina", "Ajudar as células de defesa a reconhecer e atacar vírus e bactérias", "Acelerar o metabolismo", "Apenas fortalecer os ossos"],
+                correct: 1,
+                feedback: "A vitamina D funciona como um 'sinal' que ativa as células de defesa do corpo. Sem vitamina D suficiente, o corpo fica confuso e as defesas reagem muito lentamente."
+            },
+            {
+                question: "Porque é que o zinco é tão falado quando se fala em defesas?",
+                options: ["Porque dá sono", "Porque ajuda as células de defesa a trabalhar muito mais depressa e eficientemente", "Porque aumenta o apetite", "Porque muda a cor do sangue"],
+                correct: 1,
+                feedback: "O zinco é como o 'combustível' das células de defesa. Sem ele, as defesas funcionam em câmara lenta. Pessoas com falta de zinco ficam doentes 3x mais vezes."
+            },
+            {
+                question: "Porque é que tomar zinco nos primeiros sintomas de constipação funciona melhor?",
+                options: ["Porque o frio sai do corpo mais depressa", "Porque o corpo ainda não deixou o vírus estabelecer-se completamente", "Porque o zinco muda a cor da língua", "Porque ativa a tosse"],
+                correct: 1,
+                feedback: "Nos primeiros sintomas, o vírus ainda está fraco e o corpo consegue vencê-lo com ajuda de zinco. Depois de 24h, o vírus já se instalou bem."
+            },
+            {
+                question: "Qual é a melhor forma de garantir vitamina C todos os dias?",
+                options: ["Comer fruta e legumes coloridos ao longo do dia", "Evitar toda a fruta", "Beber apenas refrigerantes com cor", "Tomar sempre o máximo possível"],
+                correct: 0,
+                feedback: "Uma laranja tem tanta vitamina C como muitos suplementos! A fruta fresca absorve-se melhor. Morango, kiwi e pimento vermelho são campeões."
+            },
+            {
+                question: "O que caracteriza a imunidade inata?",
+                options: ["É adquirida ao longo da vida", "É a primeira linha de defesa com que nascemos e reage em minutos", "Precisa sempre de vacinação", "Só funciona em crianças"],
+                correct: 1,
+                feedback: "A imunidade inata é como um guarda de segurança sempre alerta. Não precisa conhecer o inimigo para atacar - protege-nos na primeira exposição."
+            },
+            {
+                question: "Se está com deficiência de vitamina D, que sintoma pode aparecer primeiro?",
+                options: ["Cansaço persistente", "Aumento de infeções respiratórias", "Alergia a chocolate", "Mudança de cor dos olhos"],
+                correct: 1,
+                feedback: "Vitamina D baixa significa defesas fracas, o que resulta em mais constipações e gripes. É especialmente comum no inverno."
+            },
+            {
+                question: "A vitamina C funciona como limpadora de resíduos tóxicos durante infeções?",
+                options: ["Falso, só colore a urina", "Verdadeiro, protege as células contra danos", "Verdadeiro, mas só em suplemento", "Falso, só água quente faz isso"],
+                correct: 1,
+                feedback: "Quando o corpo combate infeções, cria resíduos perigosos que danificam células. Vitamina C limpa esses resíduos e acelera a recuperação."
+            },
+            {
+                question: "Em que situações faz sentido suplementar zinco?",
+                options: ["Quando a alimentação é desequilibrada ou fica frequentemente doente", "Sempre que se sente bem", "Apenas por moda", "Para evitar completamente todas as doenças"],
+                correct: 0,
+                feedback: "Se come pouca carne, frango ou marisco e fica doente 3+ vezes por inverno, zinco pode transformar sua saúde."
+            },
+            {
+                question: "Qual planta famosa aparece em xaropes há 100 anos?",
+                options: ["Própolis", "Gengibre", "Sabugueiro", "Alcaçuz"],
+                correct: 2,
+                feedback: "Sabugueiro é usado pelas avós há gerações. Estudos confirmam que reduz duração de constipações em 3-4 dias."
+            },
+            {
+                question: "Porque é a cúrcuma famosa?",
+                options: ["Só dá sabor", "É cara sem efeito", "Ajuda a controlar inflamação do corpo", "Substitui todos os medicamentos"],
+                correct: 2,
+                feedback: "Cúrcuma é usada há 5000 anos na Índia. Quando o corpo exagera na reação inflamatória, cúrcuma ajuda a acalmar."
+            },
+            {
+                question: "Com o que deve combinar cúrcuma para melhor absorção?",
+                options: ["Gengibre", "Pimenta preta", "Mel", "Sal"],
+                correct: 1,
+                feedback: "Pimenta preta (piperina) é como um turbocompressor para cúrcuma. Sozinha absorve-se pouco, com pimenta a absorção dispara!"
+            },
+            {
+                question: "Porque é que 70% das defesas estão ligadas ao intestino?",
+                options: ["Só aumenta apetite", "Bactérias amigas ensinam defesas a distinguir amigos de inimigos", "Ocupam espaço dos vírus", "Transformam comida em super-poder"],
+                correct: 1,
+                feedback: "Probióticos são treinadores das defesas. Ensinam ao corpo o que é perigoso e o que é amigo. Intestino desequilibrado significa defesas confusas."
+            },
+            {
+                question: "Porque probióticos reforçam defesas em quem tem problemas digestivos?",
+                options: ["Dão superpoderes", "Intestino saudável é a base da imunidade", "Mudam cor das fezes", "Fazem perder peso automaticamente"],
+                correct: 1,
+                feedback: "Intestino com flora fraca é barreira fraca. Restaurar flora intestinal é restaurar o quartel-general das defesas."
+            },
+            {
+                question: "Porque Echinacea foi usada por séculos contra constipações?",
+                options: ["Tinha sabor agradável", "Estimula o corpo a reconhecer e atacar invasores mais rápido", "Substitui todas as defesas", "Aumenta temperatura corporal"],
+                correct: 1,
+                feedback: "Echinacea acorda o sistema imunitário deixando defesas mais atentas. Tomada nos primeiros sintomas pode parar constipações."
+            },
+            {
+                question: "Qual benefício de investir 3-6 meses em reforçar defesas?",
+                options: ["Nunca mais ficar doente", "Ficar doente 50-70% menos vezes e recuperar 3-5 dias mais rápido", "Não precisar de médicos", "Virar super-humano"],
+                correct: 1,
+                feedback: "É realista: em vez de 6-8 constipações por inverno, terá 2-3. Recuperação em 4-5 dias em vez de 10. Poupa tempo, dinheiro e qualidade de vida."
+            }
+        ];
+
+        console.log("TOTAL DE PERGUNTAS:", defaultQuestions.length);
+
+        let questions = [...defaultQuestions];
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = [];
+        let enableDiscount = true;
+        let discountCode = "LIGA_QUIZ_IMUNO";
+        let discountPercent = 5;
+
+        function checkAdminAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'fligacol2023') {
+                document.getElementById('discountBtn').style.display = 'inline-block';
+            }
+        }
+
+        function initQuiz() {
+            answered = new Array(questions.length).fill(null);
+            currentQuestion = 0;
+            score = 0;
+            loadQuizSection();
+        }
+
+        function startQuiz() {
+            document.getElementById('quizStartSection').classList.remove('active');
+            document.getElementById('quizSection').classList.add('active');
+            initQuiz();
+        }
+
+        function loadQuizSection() {
+            const quizSection = document.getElementById('quizSection');
+            quizSection.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <div class="question-number">Pergunta ${idx + 1} de ${questions.length}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="options">
+                        ${q.options.map((opt, optIdx) => `
+                            <div class="option" onclick="selectOption(${idx}, ${optIdx})" id="opt-${idx}-${optIdx}">
+                                ${String.fromCharCode(65 + optIdx)}. ${opt}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" id="feedback-${idx}"></div>
+                `;
+                quizSection.appendChild(card);
+            });
+
+            const nav = document.createElement('div');
+            nav.className = 'navigation';
+            nav.innerHTML = `
+                <button class="btn btn-secondary" onclick="previousQuestion()" id="prevBtn" style="display: none;">← Anterior</button>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: ${(1 / questions.length) * 100}%;"></div>
+                </div>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">Próxima →</button>
+            `;
+            quizSection.appendChild(nav);
+
+            showQuestion(0);
+        }
+
+        function showQuestion(idx) {
+            document.querySelectorAll('.question-card').forEach((card, i) => {
+                card.style.display = i === idx ? 'block' : 'none';
+            });
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressFill = document.getElementById('progressFill');
+
+            prevBtn.style.display = idx > 0 ? 'block' : 'none';
+            nextBtn.textContent = idx === questions.length - 1 ? 'Terminar Quiz ✓' : 'Próxima →';
+            progressFill.style.width = ((idx + 1) / questions.length * 100) + '%';
+
+            if (answered[idx] !== null) {
+                document.getElementById(`opt-${idx}-${answered[idx]}`).classList.add('selected');
+            }
+        }
+
+        function selectOption(qIdx, optIdx) {
+            if (answered[qIdx] !== null) return;
+            
+            answered[qIdx] = optIdx;
+            const question = questions[qIdx];
+            const isCorrect = optIdx === question.correct;
+
+            document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add('selected');
+
+            const feedback = document.getElementById(`feedback-${qIdx}`);
+            feedback.textContent = question.feedback;
+            feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+
+            if (isCorrect) score++;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        function finishQuiz() {
+            document.getElementById('quizSection').classList.remove('active');
+            document.getElementById('resultsSection').classList.add('active');
+
+            const scorePercentage = Math.round((score / questions.length) * 100);
+            document.getElementById('scoreDisplay').textContent = `${score}/${questions.length}`;
+
+            let message = scorePercentage === 100 ? "Excelente! Você é um especialista em suplementação e imunidade! 🌟" :
+                         scorePercentage >= 80 ? "Muito bom! Demonstra sólidos conhecimentos sobre defesas e suplementos." :
+                         scorePercentage >= 60 ? "Bom desempenho! Continue a aprender sobre nutrição e imunidade." :
+                         "Continue estudando! Há muito para descobrir sobre o sistema imunitário.";
+
+            document.getElementById('resultMessage').textContent = message;
+
+            const discountBadge = document.getElementById('discountBadge');
+            if (enableDiscount && score === questions.length) {
+                discountBadge.style.display = 'block';
+                document.getElementById('discountCodeDisplay').textContent = discountCode;
+                document.getElementById('discountPercentDisplay').textContent = discountPercent;
+            } else {
+                discountBadge.style.display = 'none';
+            }
+        }
+
+        function restartQuiz() {
+            document.getElementById('resultsSection').classList.remove('active');
+            document.getElementById('quizStartSection').classList.add('active');
+            score = 0;
+            answered = [];
+            currentQuestion = 0;
+        }
+
+        function toggleDiscountOption() {
+            const section = document.getElementById('discountSection');
+            section.style.display = section.style.display === 'none' ? 'block' : 'none';
+            if (section.style.display === 'block') {
+                document.getElementById('enableDiscount').checked = enableDiscount;
+                document.getElementById('discountCode').value = discountCode;
+                document.getElementById('discountPercent').value = discountPercent;
+            }
+        }
+
+        function saveDiscountSettings() {
+            enableDiscount = document.getElementById('enableDiscount').checked;
+            discountCode = document.getElementById('discountCode').value;
+            discountPercent = parseInt(document.getElementById('discountPercent').value) || 5;
+            alert('✓ Configurações guardadas!');
+            toggleDiscountOption();
+        }
+
+        checkAdminAccess();
+    </script>
+</body>
+</html>
