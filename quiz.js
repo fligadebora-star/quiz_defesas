@@ -2,8 +2,8 @@
 
 // Configuração do desconto
 const DISCOUNT_ENABLED = true;          // coloca false para retirar
-const DISCOUNT_PERCENT = 10;
-const DISCOUNT_CODE = "DEFESAS10";
+const DISCOUNT_PERCENT = 5;
+const DISCOUNT_CODE = "LIGA_QUIZ_IMUNO";
 // DISCOUNT_MIN_SCORE será definido dinamicamente após as perguntas
 
 // Perguntas para público geral
@@ -301,3 +301,4 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
