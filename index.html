@@ -223,83 +223,58 @@
         ];
 
         let atual = 0, pontuacao = 0, respostas = [];
-        let TOTAL = perguntas.length; // agora mutável — será atualizado com o número de perguntas válidas
-        console.log("🎯 TOTAL DE PERGUNTAS (esperado):", TOTAL);
+        const TOTAL = perguntas.length;
 
         function iniciar(){
             document.getElementById('start').classList.remove('active');
             document.getElementById('quiz').classList.add('active');
             atual = 0;
             pontuacao = 0;
-            respostas = []; // inicializar depois que soubermos o TOTAL válido
+            respostas = new Array(TOTAL).fill(null);
             carregar();
         }
 
         function carregar(){
             const div = document.getElementById('quiz');
             div.innerHTML = '';
-            let criadas = 0;
 
-            perguntas.forEach((p,i)=>{
-                try {
-                    // Validar questões mínimas
-                    if (!p || typeof p.q !== 'string') throw new Error('Pergunta inválida no índice ' + i);
-                    if (!Array.isArray(p.o)) throw new Error('Opções inválidas para a pergunta ' + i);
-                    if (typeof p.c !== 'number' || p.c < 0 || p.c >= p.o.length) throw new Error('Índice de resposta correta inválido na pergunta ' + i);
+            perguntas.forEach((p, i) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.style.display = i === atual ? 'block' : 'none';
 
-                    const card = document.createElement('div');
-                    card.className = 'question-card';
-                    card.style.display = i === atual ? 'block' : 'none';
+                const num = document.createElement('div');
+                num.className = 'question-number';
+                num.textContent = `Pergunta ${i+1} de ${TOTAL}`;
 
-                    const num = document.createElement('div');
-                    num.className = 'question-number';
-                    num.textContent = `Pergunta ${i+1} de ${TOTAL}`;
+                const texto = document.createElement('div');
+                texto.className = 'question-text';
+                texto.textContent = p.q;
 
-                    const texto = document.createElement('div');
-                    texto.className = 'question-text';
-                    texto.textContent = p.q;
+                const options = document.createElement('div');
+                options.className = 'options';
 
-                    const options = document.createElement('div');
-                    options.className = 'options';
+                p.o.forEach((op, j) => {
+                    const opt = document.createElement('div');
+                    opt.className = 'option';
+                    opt.id = `op-${i}-${j}`;
+                    opt.innerHTML = `${String.fromCharCode(65+j)}. ${op}`;
+                    opt.addEventListener('click', () => responder(i, j));
+                    options.appendChild(opt);
+                });
 
-                    p.o.forEach((op,j)=>{
-                        const opt = document.createElement('div');
-                        opt.className = 'option';
-                        opt.id = `op-${i}-${j}`;
-                        opt.innerHTML = `${String.fromCharCode(65+j)}. ${op}`;
-                        opt.addEventListener('click', ()=>responder(i,j));
-                        options.appendChild(opt);
-                    });
+                const fb = document.createElement('div');
+                fb.className = 'feedback';
+                fb.id = `fb-${i}`;
 
-                    const fb = document.createElement('div');
-                    fb.className = 'feedback';
-                    fb.id = `fb-${i}`;
+                card.appendChild(num);
+                card.appendChild(texto);
+                card.appendChild(options);
+                card.appendChild(fb);
 
-                    card.appendChild(num);
-                    card.appendChild(texto);
-                    card.appendChild(options);
-                    card.appendChild(fb);
-
-                    div.appendChild(card);
-                    criadas++;
-                } catch (err) {
-                    console.error('Erro ao criar cartão da pergunta', i, err);
-                    // continuar — esta pergunta não será contada entre as válidas/ exibidas
-                }
+                div.appendChild(card);
             });
 
-            // Atualizar TOTAL para número de cards realmente criados
-            TOTAL = criadas;
-            if (TOTAL === 0) {
-                div.innerHTML = '<div class="question-card"><h3>Nenhuma pergunta válida encontrada.</h3></div>';
-                console.warn('Nenhuma pergunta válida foi criada. Verifique o array perguntas.');
-                return;
-            }
-
-            // Inicializar respostas com o TOTAL válido
-            respostas = new Array(TOTAL).fill(null);
-
-            // navegação
             const nav = document.createElement('div');
             nav.className = 'navigation';
             nav.innerHTML = `
@@ -309,24 +284,20 @@
             `;
             div.appendChild(nav);
 
-            console.log(`Perguntas esperadas: ${perguntas.length}, criadas no DOM (válidas): ${criadas}`);
             atualizarNav();
         }
 
         function atualizarNav(){
             document.getElementById('volt').style.display = atual > 0 ? 'block' : 'none';
             document.getElementById('avan').textContent = atual === TOTAL-1 ? 'Terminar ✓' : 'Próxima →';
-            const percent = TOTAL > 0 ? Math.min(100, Math.max(0, ((atual+1)/TOTAL*100))) : 0;
+            const percent = Math.min(100, Math.max(0, ((atual+1)/TOTAL*100)));
             document.getElementById('prog').style.width = percent + '%';
         }
 
-        function responder(i,j){
-            // bloquear se já respondida ou se pergunta não faz parte do conjunto válido
-            if (i < 0 || i >= TOTAL) return;
+        function responder(i, j){
             if (respostas[i] !== null) return;
             respostas[i] = j;
 
-            // encontrar se a resposta está correta — cuidado: como filtrámos perguntas inválidas ao criar, assumimos correspondência de índices
             const correto = j === perguntas[i].c;
             const opEl = document.getElementById(`op-${i}-${j}`);
             if (opEl) opEl.classList.add('selected');
@@ -363,7 +334,7 @@
             document.getElementById('quiz').classList.remove('active');
             document.getElementById('resultado').classList.add('active');
             document.getElementById('pontos').textContent=`${pontuacao}/${TOTAL}`;
-            const perc = TOTAL > 0 ? Math.round(pontuacao/TOTAL*100) : 0;
+            const perc = Math.round(pontuacao/TOTAL*100);
             document.getElementById('msg').textContent = perc===100?"Excelente! Especialista! 🌟":perc>=80?"Muito bom!":perc>=60?"Bom!":"Continue estudando!";
             if(pontuacao===TOTAL){
                 document.getElementById('vale').style.display='block';
