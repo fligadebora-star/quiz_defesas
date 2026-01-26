@@ -465,12 +465,19 @@
         }
 
         function loadQuizSection() {
-            const quizSection = document.getElementById('quizSection');
-            quizSection.innerHTML = '';
+    const quizSection = document.getElementById('quizSection');
+    quizSection.innerHTML = '';  // ← Limpa tudo
 
-            questions.forEach((q, idx) => {
-                const card = document.createElement('div');
-                card.className = 'question-card';
+    // Oculta TODOS os question-card existentes
+    document.querySelectorAll('.question-card').forEach(card => {
+        card.style.display = 'none';
+    });
+
+    questions.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.id = `card-${idx}`;  // ← Adiciona ID único
+        card.className = 'question-card';
+        // ... resto do código igual
                 card.innerHTML = `
                     <div class="question-number">Pergunta ${idx + 1} de 20</div>
                     <div class="question-text">${q.question}</div>
@@ -501,9 +508,9 @@
         }
 
         function showQuestion(idx) {
-            document.querySelectorAll('.question-card').forEach((card, i) => {
-                card.style.display = i === idx ? 'block' : 'none';
-            });
+    document.querySelectorAll('.question-card').forEach((card, i) => {
+        card.style.display = i === idx ? 'block' : 'none';
+    });
 
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
@@ -621,6 +628,7 @@
     </script>
 </body>
 </html>
+
 
 
 
